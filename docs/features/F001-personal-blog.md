@@ -22,12 +22,13 @@ updated: 2026-08-31
 
 ## Current Status
 
-In Progress：本地实现与验证完成，等待首次推送到 GitHub 并启用 Pages 工作流。
+In Progress：初始版本已推送到 GitHub，等待在仓库设置中启用 GitHub Pages 的 GitHub Actions 发布来源。
 
 ## Links
 
 - `README.md`
 - `.github/workflows/deploy.yml`
+- https://github.com/TangHui-Best/TangHui-Best.github.io
 - [EV-001：免费博客基础站点验证](../evidence/EV-001-blog-foundation.md)
 
 ## Acceptance Criteria
@@ -52,4 +53,4 @@ None yet
 
 ## Next Step
 
-在 GitHub 创建公开的 `<用户名>.github.io` 仓库，配置远程地址、首次推送 `main`，并在 Pages 设置中选择 GitHub Actions。
+在 GitHub 仓库的 Settings → Pages 中选择 GitHub Actions；若首次工作流早于该设置运行，则从 Actions 页面重新运行 `Deploy GitHub Pages`。
