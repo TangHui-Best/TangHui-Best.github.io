@@ -1,0 +1,19 @@
+---
+interface Props {
+  date: Date;
+  tags?: string[];
+}
+
+const { date, tags = [] } = Astro.props;
+const formattedDate = date.toLocaleDateString("zh-CN", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<div class="post-meta">
+  <time datetime={date.toISOString()}>{formattedDate}</time>
+  {tags.length > 0 && <span aria-hidden="true">·</span>}
+  {tags.map((tag) => <span>{tag}</span>)}
+</div>

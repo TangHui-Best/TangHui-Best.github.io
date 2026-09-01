@@ -1,0 +1,21 @@
+{
+  "name": "tanghui-blog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.18.0 <23"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "astro": "5.18.2",
+    "typescript": "^5.9.3"
+  }
+}

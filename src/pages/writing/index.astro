@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostMeta from "../../components/PostMeta.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="写作" description="技术实践、项目复盘与长期思考。">
+  <section class="page-intro">
+    <p class="eyebrow">Writing</p>
+    <h1>写作</h1>
+    <p>优先记录真实的工程问题、取舍和复盘。其他兴趣会自然地留在同一条脉络里。</p>
+  </section>
+  <section class="post-list" aria-label="文章列表">
+    {posts.map((post) => (
+      <article class="post-row">
+        <div>
+          <PostMeta date={post.data.pubDate} tags={post.data.tags} />
+          <h2><a href={`/writing/${post.slug}`}>{post.data.title}</a></h2>
+          <p>{post.data.description}</p>
+        </div>
+        <a class="arrow-link" href={`/writing/${post.slug}`} aria-label={`阅读：${post.data.title}`}>↗</a>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
