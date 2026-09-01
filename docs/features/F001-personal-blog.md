@@ -1,7 +1,7 @@
 ---
 id: F001
 doc_kind: feature
-status: active
+status: done
 created: 2026-08-31
 updated: 2026-08-31
 ---
@@ -22,7 +22,7 @@ updated: 2026-08-31
 
 ## Current Status
 
-In Progress：初始版本已推送到 GitHub，等待在仓库设置中启用 GitHub Pages 的 GitHub Actions 发布来源。
+Done：GitHub Pages 已通过 GitHub Actions 发布，公开入口可访问。
 
 ## Links
 
@@ -37,7 +37,7 @@ In Progress：初始版本已推送到 GitHub，等待在仓库设置中启用 G
 - [x] `npm run build` 等效的 Astro 静态构建生成站点。
 - [x] Markdown 文章可在列表页和详情页正确呈现，草稿不发布。
 - [x] 首页、文章、项目、关于页面在桌面与移动端可读。
-- [ ] 推送 `main` 时 GitHub Actions 能部署到 GitHub Pages。
+- [x] 推送 `main` 时 GitHub Actions 能部署到 GitHub Pages。
 - [x] README 说明本地运行、写作和首次部署步骤。
 
 ## Patch History
@@ -53,4 +53,4 @@ None yet
 
 ## Next Step
 
-在 GitHub 仓库的 Settings → Pages 中选择 GitHub Actions；若首次工作流早于该设置运行，则从 Actions 页面重新运行 `Deploy GitHub Pages`。
+新增真实文章、项目或联系信息时，遵循 README 的本地预览与推送流程。
