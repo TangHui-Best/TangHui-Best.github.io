@@ -68,7 +68,7 @@ h1, h2, h3 { font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, ser
 .project-number { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8rem; padding-top: 0.2rem; }
 .project-row h2 { margin: 0 0 0.6rem; font-size: clamp(1.7rem, 3vw, 2.45rem); }
 
-.article { max-width: 47rem; padding: clamp(3.5rem, 8vw, 6.5rem) 0 7rem; }
+.article { max-width: 47rem; margin-inline: auto; padding: clamp(3.5rem, 8vw, 6.5rem) 0 7rem; }
 .back-link { color: var(--accent-dark); font-size: 0.9rem; font-weight: 680; }
 .article-header { margin: 3rem 0 4rem; }
 .article-header h1 { max-width: 15ch; margin: 0.9rem 0 1.25rem; font-size: clamp(2.6rem, 5.5vw, 4.65rem); line-height: 1.02; }
