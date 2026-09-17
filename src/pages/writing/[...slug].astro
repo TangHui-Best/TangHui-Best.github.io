@@ -23,3 +23,24 @@ const { Content } = await render(post);
     <div class="prose"><Content /></div>
   </article>
 </BaseLayout>
+
+<script>
+  const mermaidBlocks = document.querySelectorAll<HTMLElement>(
+    '.prose pre[data-language="mermaid"] > code',
+  );
+  if (mermaidBlocks.length > 0) {
+    const mermaid = (await import("mermaid")).default;
+    mermaid.initialize({ startOnLoad: false, theme: "neutral" });
+    const containers: HTMLElement[] = [];
+    for (const code of mermaidBlocks) {
+      const pre = code.parentElement;
+      if (!pre) continue;
+      const div = document.createElement("div");
+      div.className = "mermaid";
+      div.textContent = code.textContent ?? "";
+      pre.replaceWith(div);
+      containers.push(div);
+    }
+    await mermaid.run({ nodes: containers, suppressErrors: true });
+  }
+</script>
