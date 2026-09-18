@@ -39,6 +39,8 @@ F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站�
 - Pass：浏览器实测 About Me 同时展示个人介绍、联系方式与三个当前关注主题；本地 `/now` 返回 404，不再保留重复页面。
 - Pass：2026-09-19 本地浏览器访问 `/about`，确认新的工程定位、职业表达、Now 与“工作以外”区块均可见，且只保留 GitHub 与邮箱两种联系方式；Astro 检查结果为 0 errors、0 warnings、0 hints。
 - Conditional：本机 `astro build` 在 Vite 客户端阶段退出前未生成 `dist/about/index.html`，因此未将其计为本机构建通过；此前同一环境出现过该现象，待 GitHub Pages 云端构建与发布结果作为最终静态构建验证。
+- Pass：2026-09-19 本地浏览器访问新版 `/about`，桌面与 390 × 844 视口均可读。页面展示近四年华为 AI / Agent 工程背景、深圳 / 28 岁 / 硕士、三项工程能力和 RPA Agent、Agent Gateway、LiveFlow；联系方式只保留 GitHub 与邮箱。
+- Conditional：本机 `astro check` 本次无输出挂起，未将其记为通过；本地 Astro 开发服务器已成功编译并渲染新版页面，待 GitHub Pages 云端构建与公网页面确认作为最终发布验证。
 
 ## Artifacts
 
