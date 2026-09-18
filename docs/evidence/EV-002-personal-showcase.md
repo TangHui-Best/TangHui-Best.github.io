@@ -10,13 +10,13 @@ created: 2026-09-18
 
 ## Supports Claim
 
-F002 的首页、项目、关于与 Now 页面已在现有 Astro 静态站点中实现，且保留原有写作路径与 GitHub Pages 发布方式。
+F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站点中实现，About Me 同时承载个人介绍与当前关注，并保留原有写作路径与 GitHub Pages 发布方式。
 
 ## Verification Scope
 
 - 首页的信息层级，以及“阅读文章 / 查看项目”双入口。
 - 项目页的公开仓库链接与外部链接属性。
-- Now 页面和主导航。
+- About Me 与主导航。
 - 子页面的返回首页路径，以及文章详情的返回文章列表路径。
 - 390px 宽度下的首页可读性。
 - Astro 静态类型检查。
@@ -26,27 +26,27 @@ F002 的首页、项目、关于与 Now 页面已在现有 Astro 静态站点中
 ```text
 <bundled-node> node_modules/astro/astro.js check
 <bundled-node> node_modules/astro/astro.js build
-浏览器：本地首页、/projects、/now；390 × 844 首页视口
+浏览器：本地首页、/projects、/about；390 × 844 首页视口
 ```
 
 ## Results
 
 - Pass：Astro 检查覆盖 14 个文件，结果为 0 errors、0 warnings、0 hints。
-- Pass：静态构建输出包含首页、`/projects`、`/now` 和既有 `/writing` 页面。
-- Pass：浏览器实测首页保留“阅读文章 / 查看项目”双入口，主导航可进入项目和 Now 页面；项目页展示 AgentMentor，并包含指向公开 GitHub 仓库的 `target="_blank"` 链接。
+- Pending：已通过 Astro 检查，等待本次 GitHub Pages 构建确认静态输出。
+- Pass：浏览器实测首页保留“阅读文章 / 查看项目”双入口，主导航可进入项目、写作和 About Me；项目页展示 AgentMentor，并包含指向公开 GitHub 仓库的 `target="_blank"` 链接。
 - Pass：390 × 844 视口下，首页导航、标题、行动按钮和关注方向区均可读，未观察到横向溢出。
-- Pass：浏览器实测项目页有「← 首页」并指向首页；文章详情有「← 文章列表」并指向写作列表。写作、Now、关于页面使用同一返回首页模式。
+- Pass：浏览器实测项目页有「← 首页」并指向首页；文章详情有「← 文章列表」并指向写作列表。写作与 About Me 页面使用同一返回首页模式。
+- Pass：浏览器实测 About Me 同时展示个人介绍、联系方式与三个当前关注主题；本地 `/now` 返回 404，不再保留重复页面。
 
 ## Artifacts
 
 - `src/pages/index.astro`
 - `src/pages/projects.astro`
 - `src/pages/about.astro`
-- `src/pages/now.astro`
 - `src/styles/global.css`
 - `dist/index.html`
 - `dist/projects/index.html`
-- `dist/now/index.html`
+- `dist/about/index.html`
 
 ## Notes
 

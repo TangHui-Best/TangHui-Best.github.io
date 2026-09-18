@@ -1,12 +1,30 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../config";
+
+const focuses = [
+  {
+    number: "01",
+    title: "AI 编码的工程边界",
+    description: "关注如何让 Agent 参与开发后，目标、决策、验证与恢复依然有据可查。",
+  },
+  {
+    number: "02",
+    title: "可靠的工程实践",
+    description: "持续学习 Java、Python 与分布式系统相关的工程方法，并把经验落在可复查的作品中。",
+  },
+  {
+    number: "03",
+    title: "技术以外的长期观察",
+    description: "市场、历史与社会变化会不定期出现；它们帮助我从更大的尺度理解技术。",
+  },
+];
 ---
 
-<BaseLayout title="关于" description="Tang Hui 的个人网站。">
+<BaseLayout title="About Me" description="Tang Hui 的个人介绍与当前关注。">
   <a class="back-link page-back" href="/">← 首页</a>
   <section class="page-intro page-intro--from-home about-intro">
-    <p class="eyebrow">About</p>
+    <p class="eyebrow">About Me</p>
     <h1>工程之外，<br />也保持好奇。</h1>
     <p>我是 Tang Hui，目前在华为工作。这个网站是一个持续更新的个人橱窗：记录 AI 与 Agent 工程实践，也为市场、历史和其他长期兴趣留下位置。</p>
   </section>
@@ -24,6 +42,24 @@ import { site } from "../config";
       {site.github && <p><a class="text-link" href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a></p>}
       {site.email && <p><a class="text-link" href={`mailto:${site.email}`}>{site.email}</a></p>}
       {!site.github && !site.email && <p>公开联系方式将在确认后展示。</p>}
+    </div>
+  </section>
+  <section class="about-now" aria-labelledby="now-title">
+    <div class="about-now-heading">
+      <p class="eyebrow">Now</p>
+      <h2 id="now-title">此刻，<br />我在关注什么？</h2>
+      <p>这不是履历，也不是待办清单。它是一个会不时更新的坐标：让我和首次来到这里的人，都能知道我正往哪里走。</p>
+    </div>
+    <div class="now-list" aria-label="当前关注主题">
+      {focuses.map((focus) => (
+        <article>
+          <span>{focus.number}</span>
+          <div>
+            <h3>{focus.title}</h3>
+            <p>{focus.description}</p>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 </BaseLayout>

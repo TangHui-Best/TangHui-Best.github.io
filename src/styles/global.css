@@ -97,10 +97,14 @@ h1, h2, h3 { font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, ser
 .about-grid code { padding: 0.13rem 0.3rem; background: var(--wash); }
 .contact-card { padding: 1.5rem; border: 1px solid var(--line); align-self: start; }
 
-.now-list { margin: 0 0 7rem; border-top: 1px solid var(--line); }
+.about-now { padding: 0 0 7rem; }
+.about-now-heading { max-width: 45rem; padding: 0 0 2.2rem; }
+.about-now-heading h2 { margin: 0; font-size: clamp(2.3rem, 4.4vw, 4rem); line-height: 1.02; }
+.about-now-heading > p:last-child { max-width: 42rem; margin: 1.4rem 0 0; color: var(--muted); font-size: 1.1rem; line-height: 1.8; }
+.now-list { margin: 0; border-top: 1px solid var(--line); }
 .now-list article { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1.25rem; padding: 2.2rem 0; border-bottom: 1px solid var(--line); }
 .now-list span { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8rem; padding-top: 0.25rem; }
-.now-list h2 { margin: 0 0 0.65rem; font-size: clamp(1.55rem, 2.8vw, 2.35rem); }
+.now-list h3 { margin: 0 0 0.65rem; font-size: clamp(1.55rem, 2.8vw, 2.35rem); }
 .now-list p { max-width: 42rem; margin: 0; color: var(--muted); line-height: 1.75; }
 .not-found { min-height: 56vh; }
 .site-footer { display: flex; justify-content: space-between; gap: 1.5rem; padding: 1.7rem 0 2.3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8rem; }
