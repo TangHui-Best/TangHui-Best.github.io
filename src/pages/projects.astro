@@ -4,9 +4,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const projects = [
   {
     number: "01",
-    title: "项目案例将在这里展开",
-    description: "一个好的项目条目不只展示技术栈，还会说明问题、约束、方案、结果，以及能够复查的链接。",
-    status: "准备中",
+    title: "AgentMentor",
+    label: "AI-assisted engineering memory",
+    description: "面向 Codex、Claude Code 等编码 Agent 的工程记忆框架。它将功能目标、设计取舍、已验证事实与可复用经验保留在代码库中，降低长期迭代中“只看到代码、看不到为什么”的信息损失。",
+    stack: ["AI Agent", "Skills", "Engineering workflow"],
+    href: "https://github.com/TangHui-Best/ai-coding-harness",
   },
 ];
 ---
@@ -14,19 +16,24 @@ const projects = [
 <BaseLayout title="项目" description="可验证的项目与工程实践。">
   <section class="page-intro">
     <p class="eyebrow">Selected work</p>
-    <h1>项目</h1>
-    <p>这里保留可以被验证的作品，而不是技术名词的陈列。</p>
+    <h1>让作品<br />自己说话。</h1>
+    <p>这里保留能够被阅读、运行或复查的工程实践，而不是技术名词的陈列。</p>
   </section>
   <section class="projects" aria-label="项目列表">
     {projects.map((project) => (
       <article class="project-row">
         <span class="project-number">{project.number}</span>
         <div>
-          <p class="eyebrow">{project.status}</p>
+          <p class="eyebrow">{project.label}</p>
           <h2>{project.title}</h2>
           <p>{project.description}</p>
+          <div class="tag-list" aria-label="项目主题">
+            {project.stack.map((item) => <span>{item}</span>)}
+          </div>
+          <a class="project-link" href={project.href} target="_blank" rel="noreferrer">在 GitHub 查看项目 <span aria-hidden="true">↗</span></a>
         </div>
       </article>
     ))}
   </section>
+  <p class="project-note">更多项目会在具备公开条件与可验证内容后陆续加入。</p>
 </BaseLayout>
