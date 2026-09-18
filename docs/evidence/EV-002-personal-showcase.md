@@ -37,6 +37,8 @@ F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站�
 - Pass：390 × 844 视口下，首页导航、标题、行动按钮和关注方向区均可读，未观察到横向溢出。
 - Pass：浏览器实测项目页有「← 首页」并指向首页；文章详情有「← 文章列表」并指向写作列表。写作与 About Me 页面使用同一返回首页模式。
 - Pass：浏览器实测 About Me 同时展示个人介绍、联系方式与三个当前关注主题；本地 `/now` 返回 404，不再保留重复页面。
+- Pass：2026-09-19 本地浏览器访问 `/about`，确认新的工程定位、职业表达、Now 与“工作以外”区块均可见，且只保留 GitHub 与邮箱两种联系方式；Astro 检查结果为 0 errors、0 warnings、0 hints。
+- Conditional：本机 `astro build` 在 Vite 客户端阶段退出前未生成 `dist/about/index.html`，因此未将其计为本机构建通过；此前同一环境出现过该现象，待 GitHub Pages 云端构建与发布结果作为最终静态构建验证。
 
 ## Artifacts
 
