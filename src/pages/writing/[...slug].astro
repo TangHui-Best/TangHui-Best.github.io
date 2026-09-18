@@ -14,7 +14,7 @@ const { Content } = await render(post);
 
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="article">
-    <a class="back-link" href="/writing">← 全部文章</a>
+    <a class="back-link" href="/writing">← 文章列表</a>
     <header class="article-header">
       <PostMeta date={post.data.pubDate} tags={post.data.tags} />
       <h1>{post.data.title}</h1>

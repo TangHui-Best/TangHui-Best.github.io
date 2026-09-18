@@ -8,7 +8,8 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
 ---
 
 <BaseLayout title="写作" description="技术实践、项目复盘与长期思考。">
-  <section class="page-intro">
+  <a class="back-link page-back" href="/">← 首页</a>
+  <section class="page-intro page-intro--from-home">
     <p class="eyebrow">Writing</p>
     <h1>写作</h1>
     <p>优先记录真实的工程问题、取舍和复盘。其他兴趣会自然地留在同一条脉络里。</p>
