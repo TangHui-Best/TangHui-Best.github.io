@@ -106,6 +106,9 @@ h1, h2, h3 { font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, ser
 .now-list span { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8rem; padding-top: 0.25rem; }
 .now-list h3 { margin: 0 0 0.65rem; font-size: clamp(1.55rem, 2.8vw, 2.35rem); }
 .now-list p { max-width: 42rem; margin: 0; color: var(--muted); line-height: 1.75; }
+.about-beyond { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.78fr); gap: clamp(2rem, 8vw, 7rem); padding: 3.5rem 0 7rem; border-top: 1px solid var(--line); }
+.about-beyond h2 { margin: 0; font-size: clamp(2.3rem, 4.4vw, 4rem); line-height: 1.02; }
+.about-beyond > p { max-width: 30rem; margin: 0; align-self: end; color: var(--muted); font-size: 1.08rem; line-height: 1.85; }
 .not-found { min-height: 56vh; }
 .site-footer { display: flex; justify-content: space-between; gap: 1.5rem; padding: 1.7rem 0 2.3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8rem; }
 
@@ -121,7 +124,7 @@ h1, h2, h3 { font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, ser
   .section-link { display: inline-block; margin-top: 0.8rem; }
   .post-row { gap: 0.7rem; padding: 1.6rem 0 1.7rem; }
   .arrow-link { align-self: start; }
-  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-grid, .about-beyond { grid-template-columns: 1fr; gap: 2rem; }
   .project-row, .now-list article { grid-template-columns: 2.75rem 1fr; gap: 0.9rem; }
   .project-note { margin: -3.75rem 0 6rem 3.65rem; }
   .site-footer { flex-direction: column; gap: 0.5rem; }
