@@ -51,4 +51,4 @@ F002 的首页、项目、关于与 Now 页面已在现有 Astro 静态站点中
 ## Notes
 
 - 公开信息仅覆盖用户提供的在职背景、技能方向和一个项目；后续应在新增可公开案例后补充项目页。
-- 本证据验证本地站点。2026-09-18 尝试 `git push origin main` 时连接持续卡住，尚未能确认 GitHub Actions 与公网页面更新。
+- 2026-09-18 经 Git Credential Manager 重新认证后，提交 `3fd0aad` 已推送至 `main`；通过公网 `https://tanghui-best.github.io/projects` 确认「← 首页」已可见。

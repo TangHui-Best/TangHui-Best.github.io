@@ -1,7 +1,7 @@
 ---
 id: F002
 doc_kind: feature
-status: in_progress
+status: done
 index_summary: 将既有博客升级为以 AI / Agent 工程实践为主线的个人橱窗，保留写作与 GitHub Pages 发布流程。
 created: 2026-09-18
 updated: 2026-09-18
@@ -81,7 +81,7 @@ updated: 2026-09-18
 
 ## Current Status
 
-实现与本地验证已完成；GitHub 推送连接在发布时持续卡住，公网页面更新待完成推送后复查。
+Done：返回路径与个人橱窗页面已推送至 `main`。2026-09-18 通过公网项目页确认「← 首页」已经可见。
 
 ## Decision Context
 
@@ -129,4 +129,4 @@ None yet
 
 ## Next Step
 
-先完成 `git push origin main` 并确认 GitHub Actions 发布；之后在有新的可公开项目、明确岗位方向或外部职业资料时，补充项目案例和关于页即可。
+在有新的可公开项目、明确岗位方向或外部职业资料时，补充项目案例和关于页即可；不需要更换当前发布架构。
