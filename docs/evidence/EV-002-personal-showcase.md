@@ -32,7 +32,7 @@ F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站�
 ## Results
 
 - Pass：Astro 检查覆盖 14 个文件，结果为 0 errors、0 warnings、0 hints。
-- Pending：已通过 Astro 检查，等待本次 GitHub Pages 构建确认静态输出。
+- Pass：Astro 检查覆盖 13 个文件，结果为 0 errors、0 warnings、0 hints；GitHub Pages 已完成本次构建并发布，公网 About Me 页面可访问。
 - Pass：浏览器实测首页保留“阅读文章 / 查看项目”双入口，主导航可进入项目、写作和 About Me；项目页展示 AgentMentor，并包含指向公开 GitHub 仓库的 `target="_blank"` 链接。
 - Pass：390 × 844 视口下，首页导航、标题、行动按钮和关注方向区均可读，未观察到横向溢出。
 - Pass：浏览器实测项目页有「← 首页」并指向首页；文章详情有「← 文章列表」并指向写作列表。写作与 About Me 页面使用同一返回首页模式。
@@ -52,3 +52,4 @@ F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站�
 
 - 公开信息仅覆盖用户提供的在职背景、技能方向和一个项目；后续应在新增可公开案例后补充项目页。
 - 2026-09-18 经 Git Credential Manager 重新认证后，提交 `3fd0aad` 已推送至 `main`；通过公网 `https://tanghui-best.github.io/projects` 确认「← 首页」已可见。
+- 提交 `70f8709` 已推送至 `main`；通过公网 `https://tanghui-best.github.io/about` 确认 About Me 与当前关注内容可见，`https://tanghui-best.github.io/now` 返回 HTTP 404。

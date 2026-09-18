@@ -1,7 +1,7 @@
 ---
 id: F002
 doc_kind: feature
-status: in_progress
+status: done
 index_summary: 将既有博客升级为以 AI / Agent 工程实践为主线的个人橱窗，保留写作与 GitHub Pages 发布流程。
 created: 2026-09-18
 updated: 2026-09-18
@@ -80,7 +80,7 @@ updated: 2026-09-18
 
 ## Current Status
 
-进行中：About 与 Now 正在合并为 About Me，待本地与公网页面验证。
+Done：About 与 Now 已合并为 About Me，2026-09-18 已通过公网页面确认内容出现且旧 `/now` 路由已移除。
 
 ## Decision Context
 
@@ -119,7 +119,7 @@ updated: 2026-09-18
 
 | Patch | Date | Commit | Symptom | Root Cause | Protection | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| F002.1 | 2026-09-18 | pending | About 与 Now 内容重叠，一级导航过碎。 | 当前关注主题不足以独立形成长期页面。 | 将 Now 并入 About Me，保留原内容并从导航移除独立路由。 | in_progress |
+| F002.1 | 2026-09-18 | 70f8709 | About 与 Now 内容重叠，一级导航过碎。 | 当前关注主题不足以独立形成长期页面。 | 将 Now 并入 About Me，保留原内容并从导航移除独立路由。 | done |
 
 ## Evidence
 
@@ -127,4 +127,4 @@ updated: 2026-09-18
 
 ## Next Step
 
-完成 About Me 合并与发布验证后，在有新的可公开项目、明确岗位方向或外部职业资料时补充项目案例即可；不需要更换当前发布架构。
+在有新的可公开项目、明确岗位方向或外部职业资料时补充项目案例即可；不需要更换当前发布架构。
