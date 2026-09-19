@@ -11,8 +11,9 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
 <BaseLayout>
   <section class="hero" aria-labelledby="intro-title">
     <p class="eyebrow">个人网站 · 持续建设中</p>
-    <h1 id="intro-title">写下做过的事，<br />也写下让 AI 落地的过程。</h1>
+    <h1 id="intro-title">记录做过的事，<br />也写下其中的思考。</h1>
     <p class="hero-copy">我目前在华为工作，关注 AI、Agent 与工程实践。这里收录可验证的项目、技术复盘，以及技术之外仍在生长的好奇心。</p>
+    <p class="hero-contact">欢迎来信交流：<a href="mailto:btanghui@163.com">btanghui@163.com</a></p>
     <div class="hero-actions" aria-label="探索网站">
       <a class="button" href="/writing">阅读文章</a>
       <a class="tab-link" href="/projects">查看项目 <span aria-hidden="true">↗</span></a>

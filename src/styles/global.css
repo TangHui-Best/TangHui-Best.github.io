@@ -43,6 +43,8 @@ a:hover { color: var(--accent); }
 h1, h2, h3 { font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, serif; font-weight: 600; letter-spacing: -0.045em; }
 .hero h1 { margin: 0; max-width: 100%; font-size: clamp(2.4rem, 4.5vw, 4rem); line-height: 1.12; }
 .hero-copy { max-width: 41rem; margin: 2.2rem 0 0; color: var(--muted); font-size: clamp(1.08rem, 1.7vw, 1.33rem); line-height: 1.85; }
+.hero-contact { margin: 0.85rem 0 0; color: var(--muted); font-size: 0.98rem; }
+.hero-contact a { color: var(--accent-dark); font-weight: 680; text-underline-offset: 0.25em; }
 .hero-actions { display: flex; align-items: center; gap: 1.5rem; margin-top: 2.5rem; }
 .button { display: inline-block; padding: 0.8rem 1.1rem; background: var(--ink); color: var(--paper); font-weight: 680; text-decoration: none; transition: background 170ms ease-out, transform 170ms ease-out; }
 .button:hover { color: var(--paper); background: var(--accent-dark); transform: translateY(-2px); }
