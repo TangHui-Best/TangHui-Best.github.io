@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostMeta from "../../components/PostMeta.astro";
+import spiderMan from "../../assets/spider-man.svg";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -14,7 +15,12 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
     <h1>写作</h1>
     <p>记录 AI、Agent 与软件工程中的真实问题、关键取舍和可复查的复盘，也记录生活带来的观察与灵感。</p>
   </section>
-  <section class="post-list" aria-label="文章列表">
+  <div class="writing-divider" aria-hidden="true">
+    <span class="writing-divider__line"></span>
+    <span class="writing-divider__dip"></span>
+    <img class="writing-divider__spider" src={spiderMan.src} alt="" />
+  </div>
+  <section class="post-list post-list--writing" aria-label="文章列表">
     {posts.map((post) => (
       <article class="post-row">
         <div>
