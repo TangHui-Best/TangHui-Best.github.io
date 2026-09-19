@@ -12,7 +12,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
   <section class="page-intro page-intro--from-home">
     <p class="eyebrow">Writing</p>
     <h1>写作</h1>
-    <p>优先记录真实的工程问题、取舍和复盘。其他兴趣会自然地留在同一条脉络里。</p>
+    <p>记录 AI、Agent 与软件工程中的真实问题、关键取舍和可复查的复盘，也记录生活带来的观察与灵感。</p>
   </section>
   <section class="post-list" aria-label="文章列表">
     {posts.map((post) => (
