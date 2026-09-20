@@ -42,6 +42,8 @@ F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站�
 - Pass：2026-09-19 本地浏览器访问新版 `/about`，桌面与 390 × 844 视口均可读。页面展示近四年华为 AI / Agent 工程背景、深圳 / 28 岁 / 硕士、三项工程能力和 RPA Agent、Agent Gateway、LiveFlow；联系方式只保留 GitHub 与邮箱。
 - Conditional：本机 `astro check` 本次无输出挂起，未将其记为通过；本地 Astro 开发服务器已成功编译并渲染新版页面，待 GitHub Pages 云端构建与公网页面确认作为最终发布验证。
 - Pass：提交 `9250b3a` 与 `56ad3d5` 推送后，公网 `https://tanghui-best.github.io/about` 返回 HTTP 200，且页面正文已出现 `Agent Gateway`，确认 GitHub Pages 已完成新版发布。
+- Pass：2026-09-20 本地浏览器访问重构后的 `/about`，桌面与 390 × 844 视口均可读、无横向溢出；页面仅渲染 1 张用户授权的职业照、2 条代表系统案例与 3 条工程判断，浏览器控制台无 error / warning。
+- Pass：2026-09-20 `npm run build` 完整通过，生成 `dist/about/index.html`；本机构建总耗时约 78 秒，其中 Vite 客户端依赖转换约 72 秒。
 
 ## Artifacts
 
@@ -49,6 +51,7 @@ F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站�
 - `src/pages/projects.astro`
 - `src/pages/about.astro`
 - `src/styles/global.css`
+- `src/assets/tang-hui-headshot.jpg`
 - `dist/index.html`
 - `dist/projects/index.html`
 - `dist/about/index.html`

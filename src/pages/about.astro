@@ -1,142 +1,144 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../config";
+import headshot from "../assets/tang-hui-headshot.jpg";
 
-const capabilities = [
+const engineeringNotes = [
   {
     number: "01",
-    title: "Agent 与自动化工程化",
-    description: "让 Agent、RPA 与工作流进入真实业务场景，关注可编排能力、运行边界与持续运营，而不止是一次演示。",
+    title: "从能用，到可运营",
+    description: "Agent、RPA 与工作流进入真实业务后，重点不再只是一次回答或一次演示，而是能力如何被编排、被观察，也能被持续维护。",
   },
   {
     number: "02",
-    title: "平台集成与服务治理",
-    description: "围绕 Agent Gateway、A2A、MCP 和跨系统协作，处理接入、权限、协议与可观测性等工程问题。",
+    title: "让连接有边界",
+    description: "多 Agent、多工具和既有系统之间，需要清楚的接入方式、权限边界、协议约束与治理机制，复杂性才不会被悄悄转移。",
   },
   {
     number: "03",
-    title: "分布式系统的可靠交付",
-    description: "以 Java、Python 和分布式高并发实践为底座，持续关注系统的稳定性、可追溯性与可恢复性。",
+    title: "把可靠性放在前面",
+    description: "Java、Python 与分布式高并发实践是底座。接入、运行、观测和故障恢复应当一起被设计，而不是上线前的补丁。",
   },
 ];
 
-const platforms = [
+const systems = [
   {
     number: "01",
     title: "RPA Agent",
-    description: "参与 Agent 与 RPA 自动化能力的工程实践，探索怎样让能力更自然地进入业务流程。",
+    statement: "让自动化能力更自然地进入真实业务流程。",
+    context: "围绕 Agent 与 RPA 的结合，面对重复流程、规则约束与既有系统协同等真实场景。",
+    role: "参与自动化能力的工程实践，关注自然语言理解、任务编排与异常处理如何落到可持续的流程中。",
+    constraint: "业务流程不能只追求“跑通”；可靠性、权限边界和后续维护同样决定它能否真正被使用。",
   },
   {
     number: "02",
     title: "Agent Gateway",
-    description: "面向多 Agent 与多系统接入，关注连接方式、服务治理与长期可维护性。",
-  },
-  {
-    number: "03",
-    title: "LiveFlow",
-    description: "参与数字化流程平台相关实践，在高并发和跨系统协同的约束下推进能力落地。",
-  },
-];
-
-const focuses = [
-  {
-    number: "01",
-    title: "AI 编码的工程边界",
-    description: "当 Agent 参与开发，目标、决策、验证与恢复仍然要有据可查。工具可以更快，但工程不能失去边界。",
-  },
-  {
-    number: "02",
-    title: "可靠性不是收尾工作",
-    description: "真正进入业务的 AI 系统，需要从接入、权限、运行到故障恢复都被认真设计，而不是上线前再补救。",
-  },
-  {
-    number: "03",
-    title: "技术以外的长期观察",
-    description: "市场、历史与社会变化会不定期出现；它们帮助我从更大的尺度理解技术与人的选择。",
+    statement: "为多 Agent 与多系统建立可治理的连接层。",
+    context: "当 Agent、工具与企业服务不断增加，接入方式、调用链路和管理责任容易变得分散。",
+    role: "参与面向多 Agent、多系统接入的工程实践，关注连接方式、服务治理、可观测性与长期可维护性。",
+    constraint: "真正困难的部分在系统边界：权限、协议、稳定性与演进成本，必须在设计阶段被正视。",
   },
 ];
 ---
 
 <BaseLayout title="About Me" description="Tang Hui 的企业级 AI / Agent 工程实践与个人介绍。">
-  <a class="back-link page-back" href="/">← 首页</a>
-  <section class="page-intro page-intro--from-home about-intro">
-    <p class="eyebrow">About Me</p>
-    <h1>把复杂的事，<br />做成可落地的系统。</h1>
-    <p>我是 Tang Hui，一名从事企业级 AI / Agent 工程实践的解决方案架构与开发工程师。近四年，我在华为参与 Agent、自动化与数字化平台相关工作。</p>
+  <section class="about-case-hero" aria-labelledby="about-title">
+    <div class="about-case-hero__copy">
+      <a class="back-link about-case-hero__back" href="/">← 首页</a>
+      <p class="eyebrow">01 · About Me</p>
+      <h1 id="about-title">让 AI 进入<br />复杂系统。</h1>
+      <p class="about-case-hero__lede">我是 Tang Hui。从事企业级 AI / Agent 工程实践近四年，在华为参与 Agent、自动化与数字化平台相关工作。</p>
+      <div class="about-case-hero__tags" aria-label="职业概览">
+        <span>2022.07 — 至今</span>
+        <span>深圳 · 28 岁 · 硕士</span>
+        <span>AI 解决方案架构与软件开发</span>
+      </div>
+      <p class="about-case-hero__position">关注的不是“模型能做什么”，而是它进入业务后，如何和既有系统协同、被可靠地管理，并在长期运行中保持可验证。</p>
+    </div>
+    <figure class="about-portrait">
+      <div class="about-portrait__frame">
+        <img src={headshot.src} width={headshot.width} height={headshot.height} alt="Tang Hui 的职业照" fetchpriority="high" />
+      </div>
+      <figcaption>
+        <span>Enterprise AI / Agent</span>
+        <span>People · Process · Systems</span>
+      </figcaption>
+    </figure>
   </section>
 
-  <section class="about-profile" aria-labelledby="profile-title">
-    <div class="about-profile-copy">
-      <p class="eyebrow">Profile</p>
-      <h2 id="profile-title">不只是会用 AI，<br />也把它放进复杂系统里。</h2>
-      <p>我关注的不是“模型能做什么”，而是它进入业务之后，如何与既有系统协同，如何被管理，也如何在不确定性中保持可靠。</p>
+  <section class="case-studies" aria-labelledby="case-studies-title">
+    <div class="case-studies__heading">
+      <p class="eyebrow">02 · Selected systems</p>
+      <h2 id="case-studies-title">从一个真实问题开始。</h2>
+      <p>以下内容用于说明我参与过的工程方向与关注点，不披露内部数据、客户信息或实现细节。</p>
     </div>
-    <ul class="profile-facts" aria-label="职业信息">
-      <li><span>经验</span><strong>2022.07 — 至今 · 华为</strong></li>
-      <li><span>所在地</span><strong>深圳 · 28 岁 · 硕士</strong></li>
-      <li><span>方向</span><strong>AI 解决方案架构与软件开发</strong></li>
-    </ul>
-  </section>
-
-  <section class="capability-section" aria-labelledby="capability-title">
-    <div class="section-kicker">
-      <p class="eyebrow">Capability</p>
-      <h2 id="capability-title">我的工程坐标</h2>
-    </div>
-    <div class="capability-list" aria-label="工程能力">
-      {capabilities.map((capability) => (
-        <article>
-          <span>{capability.number}</span>
-          <div>
-            <h3>{capability.title}</h3>
-            <p>{capability.description}</p>
+    <div class="case-studies__list">
+      {systems.map((system) => (
+        <article class="system-case">
+          <div class="system-case__title">
+            <span>{system.number}</span>
+            <div>
+              <h3>{system.title}</h3>
+              <p>{system.statement}</p>
+            </div>
+          </div>
+          <div class="system-case__evidence">
+            <div>
+              <span>场景</span>
+              <p>{system.context}</p>
+            </div>
+            <div>
+              <span>参与与关注</span>
+              <p>{system.role}</p>
+            </div>
+            <div>
+              <span>工程约束</span>
+              <p>{system.constraint}</p>
+            </div>
           </div>
         </article>
       ))}
     </div>
   </section>
 
-  <section class="platform-section" aria-labelledby="platform-title">
-    <div class="section-kicker">
-      <p class="eyebrow">Selected practice</p>
-      <h2 id="platform-title">参与过的工程实践</h2>
-      <p>以下是工作中参与的平台方向，用来说明问题场景，不披露内部数据、客户信息或实现细节。</p>
+  <section class="engineering-notes" aria-labelledby="engineering-notes-title">
+    <div class="engineering-notes__heading">
+      <p class="eyebrow">03 · Engineering notes</p>
+      <h2 id="engineering-notes-title">我在意的，<br />是系统如何长期成立。</h2>
     </div>
-    <div class="platform-list" aria-label="代表工程实践">
-      {platforms.map((platform) => (
+    <div class="engineering-notes__list" aria-label="工程判断">
+      {engineeringNotes.map((note) => (
         <article>
-          <span>{platform.number}</span>
-          <h3>{platform.title}</h3>
-          <p>{platform.description}</p>
-        </article>
-      ))}
-    </div>
-    <p class="public-work">公开侧，我也在持续维护 <a class="text-link" href="/projects">ai-coding-harness ↗</a>，把对 Agent 开发流程、验证与可恢复性的思考放进可查看的作品里。</p>
-  </section>
-  <section class="about-now" aria-labelledby="now-title">
-    <div class="about-now-heading">
-      <p class="eyebrow">Now</p>
-      <h2 id="now-title">此刻，<br />我在关注什么？</h2>
-      <p>这不是履历，也不是待办清单。它是一个会不时更新的坐标：让我和首次来到这里的人，都能知道我正往哪里走。</p>
-    </div>
-    <div class="now-list" aria-label="当前关注主题">
-      {focuses.map((focus) => (
-        <article>
-          <span>{focus.number}</span>
+          <span>{note.number}</span>
           <div>
-            <h3>{focus.title}</h3>
-            <p>{focus.description}</p>
+            <h3>{note.title}</h3>
+            <p>{note.description}</p>
           </div>
         </article>
       ))}
     </div>
   </section>
-  <section class="about-beyond" aria-labelledby="beyond-title">
+
+  <section class="public-practice" aria-labelledby="public-practice-title">
     <div>
-      <p class="eyebrow">Beyond work</p>
+      <p class="eyebrow">04 · Public practice</p>
+      <h2 id="public-practice-title">把工程判断，<br />留在可查看的作品里。</h2>
+    </div>
+    <div class="public-practice__body">
+      <p>公开侧，我持续维护 <strong>ai-coding-harness</strong>，把对 Agent 开发流程、验证与可恢复性的思考沉淀为可阅读、可追溯的内容。</p>
+      <div class="public-practice__actions">
+        <a class="button" href="/projects">查看公开项目</a>
+        <a class="tab-link" href="/writing">阅读技术写作 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-beyond about-beyond--quiet" aria-labelledby="beyond-title">
+    <div>
+      <p class="eyebrow">05 · Beyond work</p>
       <h2 id="beyond-title">工程之外，<br />也保持好奇。</h2>
     </div>
-    <p>旅行让我重新感受尺度，市场和历史则提醒我：技术从来不是孤立发生的。这个网站也会慢慢收录那些在工作以外、却持续影响我判断的观察。</p>
+    <p>市场、历史与旅行会不定期出现。它们提醒我：技术从来不是孤立发生的，也帮助我在工作之外保持对人与系统的长期观察。</p>
   </section>
 
   <section class="about-contact" aria-labelledby="contact-title">
