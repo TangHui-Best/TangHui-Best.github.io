@@ -24,6 +24,7 @@ a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18e
 a:hover { color: var(--accent); }
 
 .page-shell { width: min(100% - 2.5rem, 73rem); margin: 0 auto; }
+.page-shell--wide { width: min(100% - 5rem, 112rem); }
 
 .site-header {
   min-height: 5.75rem;
@@ -109,40 +110,48 @@ h1, h2, h3 { font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, ser
 .prose .mermaid { margin: 1.8rem 0; text-align: center; overflow-x: auto; }
 .prose .mermaid svg { max-width: 100%; height: auto; }
 
-.about-case-hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.72fr); gap: clamp(2rem, 7vw, 6rem); padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(4.5rem, 8vw, 7rem); }
-.about-case-hero__copy { display: flex; flex-direction: column; align-items: flex-start; }
-.about-case-hero__back { margin-bottom: clamp(3rem, 7vw, 6rem); }
-.about-case-hero h1 { max-width: 9em; margin: 0; font-size: clamp(3.3rem, 6.2vw, 6.2rem); line-height: 0.94; }
-.about-case-hero__lede { max-width: 37rem; margin: 2rem 0 0; color: var(--muted); font-size: clamp(1.05rem, 1.65vw, 1.25rem); line-height: 1.82; }
-.about-case-hero__tags { display: flex; flex-wrap: wrap; gap: 0.55rem 1.1rem; margin-top: 1.75rem; color: var(--ink); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.72rem; letter-spacing: 0.025em; }
-.about-case-hero__tags span + span { padding-left: 1.1rem; border-left: 1px solid var(--line); }
-.about-case-hero__position { max-width: 34rem; margin: auto 0 0; padding-top: clamp(3rem, 6vw, 5.5rem); color: var(--accent-dark); font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, serif; font-size: clamp(1.25rem, 2vw, 1.65rem); line-height: 1.45; }
-.about-portrait { align-self: end; margin: 0; }
-.about-portrait__frame { display: grid; place-items: end center; min-height: 28rem; padding: clamp(1rem, 2vw, 1.55rem) clamp(1rem, 2vw, 1.55rem) 0; background: #1d2b35; }
-.about-portrait img { display: block; width: min(100%, 23rem); max-height: 29rem; object-fit: cover; object-position: center top; }
-.about-portrait figcaption { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0 0; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; }
+.about-case-hero { display: grid; grid-template-columns: minmax(0, 1.46fr) minmax(32rem, 0.94fr); gap: clamp(3rem, 7vw, 8rem); padding: clamp(2.25rem, 5vw, 5.5rem) 0 clamp(1.5rem, 3vw, 3rem); }
+.about-case-hero__copy { display: flex; min-height: clamp(35rem, 43vw, 46rem); flex-direction: column; }
+.about-case-hero__topline { display: flex; justify-content: space-between; gap: 1.5rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--line); color: var(--muted); font-size: clamp(0.66rem, 0.72vw, 0.8rem); font-weight: 720; letter-spacing: 0.14em; text-transform: uppercase; }
+.about-case-hero__topline .back-link { flex: 0 0 auto; color: var(--accent-dark); letter-spacing: 0; text-transform: none; }
+.about-case-hero__identity { margin-top: clamp(3.5rem, 7vw, 7.5rem); }
+.about-index { margin: 0 0 1.05rem; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.82rem; letter-spacing: 0.12em; }
+.about-case-hero h1 { margin: 0; font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, serif; font-size: clamp(5.8rem, 10.8vw, 11.5rem); font-weight: 600; letter-spacing: -0.075em; line-height: 0.74; }
+.about-case-hero h1 span { margin-left: 0.08em; }
+.about-case-hero__role { margin: clamp(1.45rem, 2.2vw, 2.5rem) 0 0; font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, serif; font-size: clamp(1.8rem, 3.1vw, 3.45rem); letter-spacing: -0.055em; line-height: 1; }
+.about-case-hero__date { margin: 2.05rem 0 0; padding-left: clamp(4.5rem, 7vw, 7.5rem); color: var(--ink); font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, serif; font-size: clamp(1.35rem, 2.05vw, 2.3rem); line-height: 1; }
+.about-case-hero__date::before { display: inline-block; width: clamp(3rem, 5vw, 5.2rem); height: 2px; margin-right: 1.25rem; background: var(--accent); content: ""; vertical-align: middle; }
+.about-case-hero__statement { max-width: 34rem; margin-top: auto; padding-top: 2rem; }
+.about-case-hero__statement p { margin: 0; color: var(--muted); font-size: clamp(1rem, 1.28vw, 1.2rem); line-height: 1.72; }
+.about-case-hero__statement p + p { margin-top: 0.85rem; color: var(--ink); font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, serif; font-size: clamp(1.18rem, 1.55vw, 1.48rem); line-height: 1.55; }
+.about-portrait { align-self: end; margin: 0; padding: clamp(1rem, 1.55vw, 1.6rem); background: #1d2b35; color: var(--paper); }
+.about-portrait__frame { display: grid; grid-template-columns: minmax(0, 1fr) clamp(7.25rem, 10vw, 10.75rem); min-height: clamp(32rem, 39vw, 43rem); gap: clamp(1rem, 1.8vw, 1.9rem); }
+.about-portrait__photo { display: flex; align-items: end; justify-content: center; overflow: hidden; background: oklch(0.985 0.003 85); }
+.about-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.about-portrait__rail { display: flex; min-width: 0; flex-direction: column; justify-content: space-between; padding: 0.1rem 0 0.35rem; color: oklch(0.85 0.014 77); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(0.65rem, 0.75vw, 0.8rem); font-weight: 650; letter-spacing: 0.13em; line-height: 1.8; text-transform: uppercase; }
+.about-portrait__rail span:last-child { max-width: 9em; }
+.about-portrait figcaption { display: grid; grid-template-columns: 0.92fr 1.35fr 0.9fr; gap: 1rem; margin-top: clamp(1rem, 1.5vw, 1.5rem); padding-top: 1rem; border-top: 1px solid oklch(0.5 0.02 240); color: oklch(0.85 0.014 77); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(0.6rem, 0.67vw, 0.74rem); font-weight: 650; letter-spacing: 0.1em; line-height: 1.45; text-transform: uppercase; }
+.about-portrait figcaption span + span { padding-left: 1rem; border-left: 1px solid oklch(0.5 0.02 240); }
 .about-portrait figcaption span:last-child { text-align: right; }
 
-.case-studies { padding: 0 0 clamp(5rem, 9vw, 8rem); }
-.case-studies__heading { max-width: 48rem; padding-bottom: 2.4rem; }
-.case-studies__heading h2, .engineering-notes__heading h2, .public-practice h2 { margin: 0; font-size: clamp(2.3rem, 4.6vw, 4.25rem); line-height: 1.01; }
-.case-studies__heading > p:last-child { max-width: 43rem; margin: 1.35rem 0 0; color: var(--muted); line-height: 1.75; }
-.case-studies__list { border-top: 1px solid var(--line); }
-.system-case { display: grid; grid-template-columns: minmax(13rem, 0.72fr) minmax(0, 1.75fr); gap: clamp(2rem, 5vw, 5rem); padding: clamp(2rem, 4vw, 3.4rem) 0; border-bottom: 1px solid var(--line); }
-.system-case__title { display: grid; grid-template-columns: 2.1rem 1fr; gap: 0.9rem; align-content: start; }
-.system-case__title > span, .system-case__evidence span, .engineering-notes__list > article > span { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.75rem; letter-spacing: 0.06em; }
-.system-case h3 { margin: -0.35rem 0 0.7rem; font-size: clamp(1.75rem, 3.1vw, 2.8rem); line-height: 1; }
-.system-case__title p { max-width: 15rem; margin: 0; color: var(--muted); line-height: 1.65; }
-.system-case__evidence { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.25rem, 2.4vw, 2.2rem); }
-.system-case__evidence > div { position: relative; padding-top: 1rem; }
-.system-case__evidence > div::before { position: absolute; top: 0; right: 0; left: 0; height: 1px; background: var(--line); content: ""; }
-.system-case__evidence p { margin: 0.8rem 0 0; color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
-
-.engineering-notes { display: grid; grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr); gap: clamp(2rem, 8vw, 7rem); padding: 0 0 clamp(5rem, 9vw, 8rem); }
-.engineering-notes__list { border-top: 1px solid var(--line); }
-.engineering-notes__list article { display: grid; grid-template-columns: 2.25rem 1fr; gap: 0.9rem; padding: 1.55rem 0 1.65rem; border-bottom: 1px solid var(--line); }
-.engineering-notes__list h3 { margin: -0.25rem 0 0.55rem; font-size: clamp(1.35rem, 2.2vw, 1.8rem); }
-.engineering-notes__list p { max-width: 38rem; margin: 0; color: var(--muted); line-height: 1.72; }
+.case-studies { padding: clamp(1rem, 2vw, 2rem) 0 clamp(5rem, 8vw, 8rem); }
+.case-studies__heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; padding: 1.25rem 0 1.35rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.case-studies__heading > div { display: flex; align-items: baseline; gap: clamp(1.4rem, 3vw, 3.4rem); }
+.case-studies__heading .about-index { margin: 0; }
+.case-studies__heading h2 { margin: 0; font-size: clamp(2rem, 3.5vw, 3.7rem); line-height: 1; }
+.case-studies__heading > p { margin: 0 0 0.2rem; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(0.63rem, 0.73vw, 0.78rem); font-weight: 650; letter-spacing: 0.12em; text-align: right; text-transform: uppercase; }
+.case-studies__list { border-bottom: 1px solid var(--line); }
+.system-case { display: grid; grid-template-columns: minmax(20rem, 0.94fr) minmax(0, 2fr); gap: clamp(2.5rem, 5vw, 6rem); padding: clamp(2.4rem, 4.1vw, 4.2rem) 0; }
+.system-case + .system-case { border-top: 1px solid var(--line); }
+.system-case__title { display: grid; grid-template-columns: 3.15rem 1fr; gap: 1rem; align-content: start; }
+.system-case__title > span, .system-case__evidence span { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.82rem; letter-spacing: 0.1em; }
+.system-case__title > span::after { display: inline-block; width: 1.45rem; height: 1px; margin-left: 1rem; background: var(--accent); content: ""; vertical-align: middle; }
+.system-case h3 { margin: -0.45rem 0 1.4rem; font-size: clamp(2.15rem, 3.2vw, 3.7rem); line-height: 0.9; white-space: nowrap; }
+.system-case__title p { max-width: 17rem; margin: 0; color: var(--ink); font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, serif; font-size: clamp(1.15rem, 1.65vw, 1.75rem); letter-spacing: 0.015em; line-height: 1.42; }
+.system-case__evidence { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.8rem, 3.6vw, 4.2rem); }
+.system-case__evidence > div { padding-top: 0.9rem; border-top: 1px solid var(--line); }
+.system-case__evidence p { margin: 1rem 0 0; color: var(--muted); font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.7; }
+.case-studies__note { margin: 1rem 0 0; color: var(--muted); font-size: 0.8rem; line-height: 1.6; }
 
 .public-practice { display: grid; grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.8fr); gap: clamp(2rem, 8vw, 7rem); padding: clamp(2.4rem, 5vw, 4rem) 0 clamp(5rem, 9vw, 8rem); border-top: 1px solid var(--line); }
 .public-practice__body { align-self: end; }
@@ -172,14 +181,28 @@ h1, h2, h3 { font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, ser
   .section-link { display: inline-block; margin-top: 0.8rem; }
   .post-row { gap: 0.7rem; padding: 1.6rem 0 1.7rem; }
   .arrow-link { align-self: start; }
-  .about-case-hero, .engineering-notes, .public-practice, .about-beyond, .about-contact { grid-template-columns: 1fr; gap: 2rem; }
-  .about-case-hero { padding-top: 2.5rem; }
-  .about-case-hero__back { margin-bottom: 3.6rem; }
-  .about-case-hero__position { margin-top: 3.5rem; padding-top: 0; }
-  .about-portrait { width: min(100%, 28rem); }
-  .system-case { grid-template-columns: 1fr; gap: 1.8rem; }
-  .system-case__evidence { grid-template-columns: 1fr; gap: 1.2rem; }
-  .engineering-notes__heading { max-width: 33rem; }
+  .page-shell--wide { width: min(100% - 2rem, 112rem); }
+  .about-case-hero, .public-practice, .about-beyond, .about-contact { grid-template-columns: 1fr; gap: 2rem; }
+  .about-case-hero { padding-top: 1.75rem; }
+  .about-case-hero__copy { min-height: auto; }
+  .about-case-hero__topline { font-size: 0.58rem; letter-spacing: 0.08em; }
+  .about-case-hero__identity { margin-top: 3.25rem; }
+  .about-case-hero h1 { font-size: clamp(4.4rem, 21vw, 6.5rem); line-height: 0.8; }
+  .about-case-hero__role { font-size: clamp(1.65rem, 8vw, 2.4rem); }
+  .about-case-hero__date { margin-top: 1.6rem; padding-left: 0; font-size: 1.3rem; }
+  .about-case-hero__date::before { width: 2.25rem; margin-right: 0.8rem; }
+  .about-case-hero__statement { margin-top: 3.5rem; }
+  .about-portrait__frame { grid-template-columns: minmax(0, 1fr) 6.5rem; min-height: 28rem; }
+  .about-portrait__rail { font-size: 0.57rem; letter-spacing: 0.08em; }
+  .about-portrait figcaption { font-size: 0.53rem; letter-spacing: 0.045em; }
+  .case-studies__heading { display: block; padding: 1.25rem 0; }
+  .case-studies__heading > div { align-items: flex-start; flex-direction: column; gap: 0.65rem; }
+  .case-studies__heading > p { margin-top: 1.2rem; text-align: left; }
+  .system-case { grid-template-columns: 1fr; gap: 2.25rem; padding: 2.25rem 0; }
+  .system-case__title { grid-template-columns: 2.75rem 1fr; }
+  .system-case h3 { font-size: 2.3rem; }
+  .system-case__title p { font-size: 1.25rem; }
+  .system-case__evidence { grid-template-columns: 1fr; gap: 1.45rem; }
   .project-note { margin: -3.75rem 0 6rem 3.65rem; }
   .writing-divider__dip { left: 14%; }
   .writing-divider__spider { left: calc(14% - 1.5rem); }

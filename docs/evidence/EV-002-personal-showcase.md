@@ -45,6 +45,8 @@ F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站�
 - Pass：2026-09-20 本地浏览器访问重构后的 `/about`，桌面与 390 × 844 视口均可读、无横向溢出；页面仅渲染 1 张用户授权的职业照、2 条代表系统案例与 3 条工程判断，浏览器控制台无 error / warning。
 - Pass：2026-09-20 `npm run build` 完整通过，生成 `dist/about/index.html`；本机构建总耗时约 78 秒，其中 Vite 客户端依赖转换约 72 秒。
 - Pass：提交 `423c8c8` 推送后，公网 `https://tanghui-best.github.io/about/` 返回 HTTP 200，且响应中包含“让 AI 进入”、`RPA Agent` 与 `tang-hui-headshot` 资源引用，确认 GitHub Pages 已发布本轮 About Me 改造。
+- Pass：2026-09-20 针对 F002.5 本地浏览器复核：桌面页恢复大 `Tang Hui`、深色人物档案面板与横向三列案例档案；390 × 844 视口无横向溢出，页面仅有 1 张职业照、2 条案例，浏览器控制台无 error / warning。
+- Pass：2026-09-20 `npm run build` 通过，生成新的 `dist/about/index.html`，构建耗时 45.99 秒。
 
 ## Artifacts
 

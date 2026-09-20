@@ -3,74 +3,70 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../config";
 import headshot from "../assets/tang-hui-headshot.jpg";
 
-const engineeringNotes = [
-  {
-    number: "01",
-    title: "从能用，到可运营",
-    description: "Agent、RPA 与工作流进入真实业务后，重点不再只是一次回答或一次演示，而是能力如何被编排、被观察，也能被持续维护。",
-  },
-  {
-    number: "02",
-    title: "让连接有边界",
-    description: "多 Agent、多工具和既有系统之间，需要清楚的接入方式、权限边界、协议约束与治理机制，复杂性才不会被悄悄转移。",
-  },
-  {
-    number: "03",
-    title: "把可靠性放在前面",
-    description: "Java、Python 与分布式高并发实践是底座。接入、运行、观测和故障恢复应当一起被设计，而不是上线前的补丁。",
-  },
-];
-
 const systems = [
   {
     number: "01",
     title: "RPA Agent",
-    statement: "让自动化能力更自然地进入真实业务流程。",
-    context: "围绕 Agent 与 RPA 的结合，面对重复流程、规则约束与既有系统协同等真实场景。",
-    role: "参与自动化能力的工程实践，关注自然语言理解、任务编排与异常处理如何落到可持续的流程中。",
-    constraint: "业务流程不能只追求“跑通”；可靠性、权限边界和后续维护同样决定它能否真正被使用。",
+    statement: "让自动化能力进入真实业务流程。",
+    context: "业务流程中的规则、上下文与人工判断，并不天然适配自动化。",
+    role: "参与 Agent 与 RPA 自动化能力的工程实践，关注任务理解、流程编排与异常处理如何落入真实场景。",
+    constraint: "自动化不仅要跑通，还要能在既有系统、权限边界与长期维护中持续成立。",
   },
   {
     number: "02",
     title: "Agent Gateway",
-    statement: "为多 Agent 与多系统建立可治理的连接层。",
-    context: "当 Agent、工具与企业服务不断增加，接入方式、调用链路和管理责任容易变得分散。",
-    role: "参与面向多 Agent、多系统接入的工程实践，关注连接方式、服务治理、可观测性与长期可维护性。",
-    constraint: "真正困难的部分在系统边界：权限、协议、稳定性与演进成本，必须在设计阶段被正视。",
+    statement: "为复杂 Agent 生态建立连接层。",
+    context: "Agent、工具与企业服务增多后，接入、调用与责任边界很容易快速分散。",
+    role: "参与多 Agent、多系统接入的工程实践，关注服务治理、可观测性与长期可维护性。",
+    constraint: "权限、协议、稳定性与演进成本需要被前置设计，而不是在系统复杂后补救。",
   },
 ];
 ---
 
-<BaseLayout title="About Me" description="Tang Hui 的企业级 AI / Agent 工程实践与个人介绍。">
+<BaseLayout title="About Me" description="Tang Hui 的企业级 AI / Agent 工程实践与个人介绍。" wide>
   <section class="about-case-hero" aria-labelledby="about-title">
     <div class="about-case-hero__copy">
-      <a class="back-link about-case-hero__back" href="/">← 首页</a>
-      <p class="eyebrow">01 · About Me</p>
-      <h1 id="about-title">让 AI 进入<br />复杂系统。</h1>
-      <p class="about-case-hero__lede">我是 Tang Hui。从事企业级 AI / Agent 工程实践近四年，在华为参与 Agent、自动化与数字化平台相关工作。</p>
-      <div class="about-case-hero__tags" aria-label="职业概览">
-        <span>2022.07 — 至今</span>
-        <span>深圳 · 28 岁 · 硕士</span>
-        <span>AI 解决方案架构与软件开发</span>
+      <div class="about-case-hero__topline">
+        <span>Build agents for a more capable organization</span>
+        <a class="back-link" href="/">← 首页</a>
       </div>
-      <p class="about-case-hero__position">关注的不是“模型能做什么”，而是它进入业务后，如何和既有系统协同、被可靠地管理，并在长期运行中保持可验证。</p>
+      <div class="about-case-hero__identity">
+        <p class="about-index">01</p>
+        <h1 id="about-title">Tang <span>Hui</span></h1>
+        <p class="about-case-hero__role">企业级 AI / Agent 工程师</p>
+        <p class="about-case-hero__date">2022.07 — 至今</p>
+      </div>
+      <div class="about-case-hero__statement">
+        <p>近四年，我在华为参与 Agent、自动化与数字化平台的工程实践。</p>
+        <p>我的工作，是把模型能力放进复杂组织的既有系统里，并把接入、编排、治理和可靠运行一起做成可持续演进的工程能力。</p>
+      </div>
     </div>
     <figure class="about-portrait">
       <div class="about-portrait__frame">
-        <img src={headshot.src} width={headshot.width} height={headshot.height} alt="Tang Hui 的职业照" fetchpriority="high" />
+        <div class="about-portrait__photo">
+          <img src={headshot.src} width={headshot.width} height={headshot.height} alt="Tang Hui 的职业照" fetchpriority="high" />
+        </div>
+        <div class="about-portrait__rail" aria-hidden="true">
+          <span>Tang Hui</span>
+          <span>People<br />Processes<br />Agents<br />Real outcomes</span>
+          <span>Engineer for a more capable tomorrow</span>
+        </div>
       </div>
       <figcaption>
-        <span>Enterprise AI / Agent</span>
-        <span>People · Process · Systems</span>
+        <span>Tang Hui</span>
+        <span>Enterprise AI /<br />Agent Engineer</span>
+        <span>2022 — Now</span>
       </figcaption>
     </figure>
   </section>
 
   <section class="case-studies" aria-labelledby="case-studies-title">
     <div class="case-studies__heading">
-      <p class="eyebrow">02 · Selected systems</p>
-      <h2 id="case-studies-title">从一个真实问题开始。</h2>
-      <p>以下内容用于说明我参与过的工程方向与关注点，不披露内部数据、客户信息或实现细节。</p>
+      <div>
+        <p class="about-index">02</p>
+        <h2 id="case-studies-title">参与过的系统与问题</h2>
+      </div>
+      <p>From complexity to capability</p>
     </div>
     <div class="case-studies__list">
       {systems.map((system) => (
@@ -88,7 +84,7 @@ const systems = [
               <p>{system.context}</p>
             </div>
             <div>
-              <span>参与与关注</span>
+              <span>参与</span>
               <p>{system.role}</p>
             </div>
             <div>
@@ -99,29 +95,12 @@ const systems = [
         </article>
       ))}
     </div>
-  </section>
-
-  <section class="engineering-notes" aria-labelledby="engineering-notes-title">
-    <div class="engineering-notes__heading">
-      <p class="eyebrow">03 · Engineering notes</p>
-      <h2 id="engineering-notes-title">我在意的，<br />是系统如何长期成立。</h2>
-    </div>
-    <div class="engineering-notes__list" aria-label="工程判断">
-      {engineeringNotes.map((note) => (
-        <article>
-          <span>{note.number}</span>
-          <div>
-            <h3>{note.title}</h3>
-            <p>{note.description}</p>
-          </div>
-        </article>
-      ))}
-    </div>
+    <p class="case-studies__note">公开范围：仅讨论工程问题与个人职责，不涉及内部数据或实现细节。</p>
   </section>
 
   <section class="public-practice" aria-labelledby="public-practice-title">
     <div>
-      <p class="eyebrow">04 · Public practice</p>
+      <p class="eyebrow">03 · Public practice</p>
       <h2 id="public-practice-title">把工程判断，<br />留在可查看的作品里。</h2>
     </div>
     <div class="public-practice__body">
@@ -135,7 +114,7 @@ const systems = [
 
   <section class="about-beyond about-beyond--quiet" aria-labelledby="beyond-title">
     <div>
-      <p class="eyebrow">05 · Beyond work</p>
+      <p class="eyebrow">04 · Beyond work</p>
       <h2 id="beyond-title">工程之外，<br />也保持好奇。</h2>
     </div>
     <p>市场、历史与旅行会不定期出现。它们提醒我：技术从来不是孤立发生的，也帮助我在工作之外保持对人与系统的长期观察。</p>
