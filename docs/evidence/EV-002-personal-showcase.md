@@ -50,6 +50,7 @@ F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站�
 - Pass：提交 `7bf1779` 推送后，公网 `https://tanghui-best.github.io/about/` 返回 HTTP 200；响应中包含“参与过的系统与问题”、`Tang Hui` 与 `tang-hui-headshot`，且不再包含旧标题“从一个真实问题开始”，确认 GitHub Pages 已发布本轮视觉重构。
 - Pass：2026-09-21 本地浏览器复核职业照修正：桌面页以完整比例展示用户授权的职业照，照片不再裁切放大；390 × 844 视口无横向溢出。
 - Pass：提交 `a353108` 推送后，公网 `https://tanghui-best.github.io/about/` 返回 HTTP 200；线上 `about` 样式表包含 `object-fit: contain` 与原始照片比例规则，确认 GitHub Pages 已发布职业照修正。
+- Pass：2026-09-21 本地浏览器复核 F002.7：桌面页已移除职业照背后的深色大卡片，照片以同色系细框档案照呈现；390 × 844 视口无横向溢出。
 
 ## Artifacts
 
