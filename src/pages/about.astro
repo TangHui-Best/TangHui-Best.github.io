@@ -41,21 +41,37 @@ const systems = [
         <p>我的工作，是把模型能力放进复杂组织的既有系统里，并把接入、编排、治理和可靠运行一起做成可持续演进的工程能力。</p>
       </div>
     </div>
-    <figure class="about-portrait">
-      <div class="about-portrait__frame">
+    <figure class="about-profile">
+      <div class="about-profile__header" aria-hidden="true">
+        <span>工作档案</span>
+        <span>01 / 01</span>
+      </div>
+      <div class="about-profile__frame">
         <div class="about-portrait__photo">
           <img src={headshot.src} width={headshot.width} height={headshot.height} alt="Tang Hui 的职业照" fetchpriority="high" />
         </div>
-        <div class="about-portrait__rail" aria-hidden="true">
-          <span>Tang Hui</span>
-          <span>People<br />Processes<br />Agents<br />Real outcomes</span>
-          <span>Engineer for a more capable tomorrow</span>
-        </div>
+        <dl class="about-profile__facts">
+          <div>
+            <dt>所在</dt>
+            <dd>华为 · 深圳</dd>
+          </div>
+          <div>
+            <dt>方向</dt>
+            <dd>企业级 AI / Agent</dd>
+          </div>
+          <div>
+            <dt>经验</dt>
+            <dd>近四年工程实践</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="about-profile__focus">
+        <p>AI / Agent · 自动化与数字化平台</p>
+        <p>Java · Python · 分布式工程</p>
       </div>
       <figcaption>
-        <span>Tang Hui</span>
-        <span>Enterprise AI /<br />Agent Engineer</span>
-        <span>2022 — Now</span>
+        <span>2022.07 — 至今</span>
+        <span>持续工程实践</span>
       </figcaption>
     </figure>
   </section>

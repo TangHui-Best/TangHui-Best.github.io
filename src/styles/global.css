@@ -110,8 +110,8 @@ h1, h2, h3 { font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, ser
 .prose .mermaid { margin: 1.8rem 0; text-align: center; overflow-x: auto; }
 .prose .mermaid svg { max-width: 100%; height: auto; }
 
-.about-case-hero { display: grid; grid-template-columns: minmax(0, 1.46fr) minmax(32rem, 0.94fr); gap: clamp(3rem, 7vw, 8rem); padding: clamp(2.25rem, 5vw, 5.5rem) 0 clamp(1.5rem, 3vw, 3rem); }
-.about-case-hero__copy { display: flex; min-height: clamp(35rem, 43vw, 46rem); flex-direction: column; }
+.about-case-hero { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(28rem, 0.86fr); gap: clamp(3rem, 6vw, 7rem); padding: clamp(2.25rem, 5vw, 5.5rem) 0 clamp(1.5rem, 3vw, 3rem); }
+.about-case-hero__copy { display: flex; min-height: clamp(34rem, 41vw, 44rem); flex-direction: column; }
 .about-case-hero__topline { display: flex; justify-content: space-between; gap: 1.5rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--line); color: var(--muted); font-size: clamp(0.66rem, 0.72vw, 0.8rem); font-weight: 720; letter-spacing: 0.14em; text-transform: uppercase; }
 .about-case-hero__topline .back-link { flex: 0 0 auto; color: var(--accent-dark); letter-spacing: 0; text-transform: none; }
 .about-case-hero__identity { margin-top: clamp(3.5rem, 7vw, 7.5rem); }
@@ -124,15 +124,21 @@ h1, h2, h3 { font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, ser
 .about-case-hero__statement { max-width: 34rem; margin-top: auto; padding-top: 2rem; }
 .about-case-hero__statement p { margin: 0; color: var(--muted); font-size: clamp(1rem, 1.28vw, 1.2rem); line-height: 1.72; }
 .about-case-hero__statement p + p { margin-top: 0.85rem; color: var(--ink); font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, serif; font-size: clamp(1.18rem, 1.55vw, 1.48rem); line-height: 1.55; }
-.about-portrait { align-self: end; margin: 0; padding: clamp(1rem, 1.55vw, 1.6rem); background: #1d2b35; color: var(--paper); }
-.about-portrait__frame { display: grid; grid-template-columns: minmax(0, 1fr) clamp(7.25rem, 10vw, 10.75rem); min-height: clamp(32rem, 39vw, 43rem); gap: clamp(1rem, 1.8vw, 1.9rem); }
-.about-portrait__photo { align-self: start; justify-self: center; width: min(86%, 21rem); aspect-ratio: 426 / 476; margin-top: clamp(1.15rem, 2.2vw, 2.4rem); overflow: hidden; background: oklch(0.985 0.003 85); }
-.about-portrait img { display: block; width: 100%; height: 100%; object-fit: contain; }
-.about-portrait__rail { display: flex; min-width: 0; flex-direction: column; justify-content: space-between; padding: 0.1rem 0 0.35rem; color: oklch(0.85 0.014 77); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(0.65rem, 0.75vw, 0.8rem); font-weight: 650; letter-spacing: 0.13em; line-height: 1.8; text-transform: uppercase; }
-.about-portrait__rail span:last-child { max-width: 9em; }
-.about-portrait figcaption { display: grid; grid-template-columns: 0.92fr 1.35fr 0.9fr; gap: 1rem; margin-top: clamp(1rem, 1.5vw, 1.5rem); padding-top: 1rem; border-top: 1px solid oklch(0.5 0.02 240); color: oklch(0.85 0.014 77); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(0.6rem, 0.67vw, 0.74rem); font-weight: 650; letter-spacing: 0.1em; line-height: 1.45; text-transform: uppercase; }
-.about-portrait figcaption span + span { padding-left: 1rem; border-left: 1px solid oklch(0.5 0.02 240); }
-.about-portrait figcaption span:last-child { text-align: right; }
+.about-profile { align-self: center; width: min(100%, 36rem); margin: 0 0 0 auto; padding: clamp(1.25rem, 2vw, 2rem); background: #1d2b35; color: var(--paper); }
+.about-profile__header { display: flex; align-items: center; justify-content: space-between; padding-bottom: clamp(1rem, 1.8vw, 1.45rem); border-bottom: 1px solid oklch(0.5 0.02 240); color: oklch(0.85 0.014 77); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(0.58rem, 0.65vw, 0.72rem); font-weight: 650; letter-spacing: 0.12em; text-transform: uppercase; }
+.about-profile__frame { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(8.5rem, 0.96fr); align-items: start; gap: clamp(1rem, 2vw, 1.85rem); padding: clamp(1.25rem, 2.4vw, 2.25rem) 0; }
+.about-portrait__photo { align-self: start; overflow: hidden; background: oklch(0.985 0.003 85); }
+.about-portrait__photo img { display: block; width: 100%; height: auto; }
+.about-profile__facts { display: grid; gap: 0; margin: 0; }
+.about-profile__facts > div { padding: 0.1rem 0 clamp(0.8rem, 1.6vw, 1.25rem); border-bottom: 1px solid oklch(0.5 0.02 240); }
+.about-profile__facts > div + div { padding-top: clamp(0.8rem, 1.6vw, 1.25rem); }
+.about-profile__facts dt { color: oklch(0.77 0.014 77); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(0.55rem, 0.58vw, 0.64rem); font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase; }
+.about-profile__facts dd { margin: 0.45rem 0 0; color: var(--paper); font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, serif; font-size: clamp(1.05rem, 1.35vw, 1.42rem); letter-spacing: -0.025em; line-height: 1.18; }
+.about-profile__focus { border-top: 1px solid oklch(0.5 0.02 240); }
+.about-profile__focus p { display: flex; align-items: center; min-height: clamp(3.5rem, 5.2vw, 4.6rem); margin: 0; color: oklch(0.91 0.01 85); font-size: clamp(0.85rem, 1.02vw, 1.05rem); font-weight: 600; letter-spacing: -0.015em; line-height: 1.35; }
+.about-profile__focus p + p { border-top: 1px solid oklch(0.5 0.02 240); }
+.about-profile figcaption { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.15rem, 1.8vw, 1.6rem); padding: clamp(0.85rem, 1.3vw, 1.1rem) clamp(0.9rem, 1.5vw, 1.35rem); background: var(--accent); color: var(--paper); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(0.58rem, 0.64vw, 0.7rem); font-weight: 650; letter-spacing: 0.1em; line-height: 1.4; text-transform: uppercase; }
+.about-profile figcaption span:last-child { color: oklch(0.93 0.026 71); text-align: right; }
 
 .case-studies { padding: clamp(1rem, 2vw, 2rem) 0 clamp(5rem, 8vw, 8rem); }
 .case-studies__heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; padding: 1.25rem 0 1.35rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -192,10 +198,12 @@ h1, h2, h3 { font-family: Iowan Old Style, Baskerville, "Songti SC", STSong, ser
   .about-case-hero__date { margin-top: 1.6rem; padding-left: 0; font-size: 1.3rem; }
   .about-case-hero__date::before { width: 2.25rem; margin-right: 0.8rem; }
   .about-case-hero__statement { margin-top: 3.5rem; }
-  .about-portrait__frame { grid-template-columns: minmax(0, 1fr) 6.5rem; min-height: 28rem; }
-  .about-portrait__photo { width: min(88%, 17rem); margin-top: 1rem; }
-  .about-portrait__rail { font-size: 0.57rem; letter-spacing: 0.08em; }
-  .about-portrait figcaption { font-size: 0.53rem; letter-spacing: 0.045em; }
+  .about-profile { width: 100%; margin: 0; padding: 1.15rem; }
+  .about-profile__header { padding-bottom: 1rem; font-size: 0.57rem; }
+  .about-profile__frame { grid-template-columns: minmax(0, 1.05fr) minmax(8rem, 0.95fr); gap: 1rem; padding: 1rem 0; }
+  .about-profile__facts dd { font-size: 1rem; }
+  .about-profile__focus p { min-height: 3.3rem; font-size: 0.82rem; }
+  .about-profile figcaption { margin-top: 1rem; padding: 0.78rem 0.85rem; font-size: 0.54rem; letter-spacing: 0.05em; }
   .case-studies__heading { display: block; padding: 1.25rem 0; }
   .case-studies__heading > div { align-items: flex-start; flex-direction: column; gap: 0.65rem; }
   .case-studies__heading > p { margin-top: 1.2rem; text-align: left; }
