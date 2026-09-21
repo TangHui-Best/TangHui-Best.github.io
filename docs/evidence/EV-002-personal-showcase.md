@@ -52,6 +52,7 @@ F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站�
 - Pass：提交 `a353108` 推送后，公网 `https://tanghui-best.github.io/about/` 返回 HTTP 200；线上 `about` 样式表包含 `object-fit: contain` 与原始照片比例规则，确认 GitHub Pages 已发布职业照修正。
 - Pass：2026-09-21 本地浏览器复核 F002.7：桌面页已移除职业照背后的深色大卡片，照片以同色系细框档案照呈现；390 × 844 视口无横向溢出。
 - Pass：提交 `c4ad41a` 推送后，公网 `https://tanghui-best.github.io/about/` 返回 HTTP 200；线上 About 样式不再包含深色肖像背景，且包含纸质细框与档案分隔线规则，确认 GitHub Pages 已发布 F002.7。
+- Pass：2026-09-21 用户明确要求回退 F002.7；本地浏览器复核已恢复 F002.6 的深色档案卡、完整比例职业照与右侧信息栏。
 
 ## Artifacts
 
