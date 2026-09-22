@@ -1,6 +1,6 @@
 ---
 title: Jev 到底是什么？先把它理解成一个给软件用的分类模型
-description: ChatGPT 参与者为什么要做一个不会聊天的模型？Jev 的第一定义其实很简单，它是为软件做的分类模型。用一个浏览器 Agent 的真实开源 demo，看懂它到底在系统里干什么。
+description: ChatGPT 参与者为什么要做一个不会聊天的模型？Jev 的第一定义其实很简单，它是为软件做的分类模型。先用 Mario 看清它在系统里负责什么，再用浏览器 Agent 看懂动态候选项。
 pubDate: 2026-09-21
 tags: [AI, Agent, Jev, System One, 大模型]
 draft: false
@@ -25,6 +25,23 @@ Jev 发布那天，创始人 Diogo Almeida 发了一条很反常识的 X。
 你把当前情况和几个候选答案交给它，它不写一段话，只会告诉程序该选哪个、各选项的可能性多大，以及这次选择有多确定。
 
 就这么简单。
+
+先看一个不需要任何技术背景的例子，Mario。
+
+<iframe
+  src="https://www.redditmedia.com/r/typesafe_ai/comments/1whrm0q/jev_playing_mario_bros_no_prior_training_wow/?ref_source=embed&ref=share&embed=true&showmedia=true&theme=dark"
+  title="Jev playing Mario Bros"
+  loading="lazy"
+  style="width:100%; aspect-ratio:16/9; border:0; border-radius:12px; overflow:hidden;"
+></iframe>
+
+*社区分享的 Mario demo，使用 Reddit 原帖的官方内嵌播放器。[查看原帖](https://www.reddit.com/r/typesafe_ai/comments/1whrm0q/jev_playing_mario_bros_no_prior_training_wow/)。*
+
+画面里角色在跑、跳、躲障碍。把这件事拆开看，游戏代码维护地图、碰撞、动画和按键执行；Jev 每一轮只根据当前局面，在当下允许的动作里选一个。
+
+所以 Jev 不是游戏引擎，也不是直接接管每一帧的物理和控制。它更像拿手柄的玩家：决定下一步按什么，游戏本身负责让这一步真正发生。
+
+这个 demo 能帮我们建立直觉，但不该被读成「Jev 是一个专门玩 Mario 的模型」。换一套程序状态和候选动作，同一个位置也可以用在客服分流、网页操作或模型路由里。
 
 客服收到一句，订单过了七天还没到，能不能退款？
 
@@ -90,9 +107,9 @@ Jev 不擅长生成答案。
 
 ## 看一段视频，就知道它在 Agent 里干了什么
 
-游戏很容易让人误会，Jev 是不是一个专门玩游戏的模型。
+前面的 Mario 展示了 Jev 如何在一组动作里选下一步。网页场景的关键变化是：候选动作和目标会跟着页面不断变化。
 
-我们直接看一个更日常的场景，订机票。
+我们再看一个更日常的场景，订机票。
 
 Browser Use 做了一个开源的浏览器 Agent。目标很普通，从苏黎世找一张去伦敦的单程机票。视频里真正值得看的，不是它七秒多就找到了机票，而是它每一步怎么分工。
 
@@ -320,6 +337,6 @@ Jev 9 月 15 日才公开发布，仍处于 early access。它能否真的在生
 
 本文关于 Jev 的接口形状、能力边界、发布时间、训练方向与性能主张，主要依据 [TypeSafe AI 官方文档](https://docs.typesafe.ai/introduction)、[发布文章](https://typesafe.ai/blog/introducing-system-one-models-and-jev) 与 Diogo Almeida 的 [发布 X](https://x.com/CompleteSkeptic/status/2099925682726002904)。TypeSafe 所称的并行采样、RLCD 训练、速度、价格和工作流表现，均属于公开材料可确认的产品方向或厂商主张，不能据此完整还原模型实现，也不应外推为所有任务的通用结论。
 
-浏览器案例及内嵌视频来自 Browser Use 的 [jev-ultrafast](https://github.com/browser-use/jev-ultrafast) 项目。该仓库以 MIT License 发布，视频文件保留原文件名与完整许可证副本，详见 [素材许可证](/media/jev-ultrafast-browser-use-LICENSE.txt)。视频展示的是一条 Google Flights 航班搜索记录，不代表一般浏览器任务的性能或可靠性。
+开头的 Mario 视频来自社区 Reddit 原帖，以官方内嵌播放器直接呈现，媒体仍由 Reddit 托管。它仅用于说明「模型从合法动作中做选择，代码执行选择」这一职责划分，不能证明 Jev 的通用游戏能力或性能。浏览器案例及内嵌视频来自 Browser Use 的 [jev-ultrafast](https://github.com/browser-use/jev-ultrafast) 项目。该仓库以 MIT License 发布，视频文件保留原文件名与完整许可证副本，详见 [素材许可证](/media/jev-ultrafast-browser-use-LICENSE.txt)。视频展示的是一条 Google Flights 航班搜索记录，不代表一般浏览器任务的性能或可靠性。
 
 游戏闭环与概率、confidence 区别的讨论，参考腾讯技术工程的 [《聊聊最近爆火的 Jev 模型，到底是个啥？》](https://mp.weixin.qq.com/s/w4kDVSF_beVA7CVhL_Xohw)。其中 demo 证明的是特定构造下的可运行性，不等于 Jev 在同一任务上必然优于 GPT 或其他模型。
