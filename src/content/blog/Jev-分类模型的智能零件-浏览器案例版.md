@@ -8,11 +8,9 @@ draft: false
 
 Jev 发布那天，创始人 Diogo Almeida 发了一条很反常识的 X。
 
-<a href="https://x.com/CompleteSkeptic/status/2099925682726002904" target="_blank" rel="noreferrer">
-  <img src="https://pbs.twimg.com/amplify_video_thumb/2099925575637057536/img/l4J_ZhkaxAe8FJXv?format=webp&amp;name=large" alt="Diogo Almeida 在 Jev 发布视频中的画面" loading="lazy" style="width:100%; border-radius:12px;" />
-</a>
+[![Diogo Almeida 发布 Jev 时的 X 原帖截图，含发布视频与浏览量](images/jev-launch-x-post.png)](https://x.com/CompleteSkeptic/status/2099925682726002904)
 
-*Diogo Almeida 发布 Jev 的 X 所附视频封面，图片仍由 X 托管。点击可查看原帖。*
+*Diogo Almeida 发布 Jev 时的 X 原帖截图。点击可查看原帖。*
 
 他参与过让 ChatGPT 更会听指令、更会和人对话的研究。但他说，过去几年一直想不通一件事。
 
