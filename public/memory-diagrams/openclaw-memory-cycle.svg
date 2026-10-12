@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1250" viewBox="0 0 1440 1250" role="img" aria-labelledby="title desc">
+  <title id="title">OpenClaw 的记忆循环</title>
+  <desc id="desc">基于 2026-10-12 查阅的官方文档，概括 Memory Core 的主要链路，不代表其他存储插件。工作中由 Agent 记录；压缩前 memory flush 补写每日笔记。Markdown 保存记忆内容，SQLite 保存检索索引与短期证据状态。来源合格的用户层和长期层可在启动时提供并按预算刷新。主 Agent 可通过 memory_search 和 memory_get 召回尚未晋升的每日记录；系统也可按可信条目的触发短语注入内容。可启用的 Active Memory 深召回在默认 escalate 模式下有额外触发条件。后台 dreaming 按 Light、REM、Deep 整理证据，经来源、评分和频次等门槛后更新 MEMORY.md；DREAMS.md 供人审阅，不作为晋升来源。省略新建或重置会话的近期日记加载特例、未来意图和其他插件。箭头表示可用路径，并非每轮必经流程。</desc>
+  <metadata>Sources: https://docs.openclaw.ai/concepts/memory-architecture ; https://docs.openclaw.ai/concepts/memory ; https://docs.openclaw.ai/concepts/memory-search ; https://docs.openclaw.ai/concepts/dreaming ; https://docs.openclaw.ai/concepts/active-memory</metadata>
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="9" flood-color="#243247" flood-opacity="0.06"/></filter>
+    <marker id="orange" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#bd6747"/></marker>
+    <marker id="blue" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#4c70bd"/></marker>
+    <marker id="teal" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#2b8279"/></marker>
+    <marker id="purple" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#8a6caf"/></marker>
+    <marker id="gray" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#82909e"/></marker>
+    <style>
+      text{font-family:'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif;fill:#273345}
+      .heading{font-size:27px;font-weight:700}.body{font-size:23px}.small{font-size:20px;fill:#677183}
+      .mono{font-family:Consolas,'Microsoft YaHei',monospace}
+      .line{fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect width="1440" height="1250" fill="#faf9f6"/>
+  <text x="52" y="58" font-size="34" font-weight="700">OpenClaw 的记忆循环</text>
+  <text x="52" y="94" class="body" style="fill:#677183">日常记录可以直接召回；成为长期记忆，需要另过一道门槛</text>
+
+  <!-- Write, bootstrap, recall and consolidation are distinct paths. -->
+  <path class="line" d="M450 615 H390" stroke="#bd6747" marker-end="url(#orange)"/>
+  <path class="line" d="M215 495 C215 300 282 240 445 240" stroke="#bd6747" marker-end="url(#orange)"/>
+  <text x="53" y="292" class="body" style="fill:#a8593e">按类型写入</text>
+  <text x="53" y="325" class="body" style="fill:#a8593e">对应文件</text>
+
+  <path class="line" d="M720 430 V540" stroke="#4c70bd" marker-end="url(#blue)"/>
+  <rect x="505" y="448" width="430" height="68" rx="10" fill="#faf9f6"/>
+  <text x="720" y="474" text-anchor="middle" class="body" style="fill:#4c70bd">启动加载／按预算刷新</text>
+  <text x="720" y="504" text-anchor="middle" class="small" style="fill:#4c70bd">来源合格的用户与长期层内容</text>
+
+  <path class="line" d="M995 240 C1160 240 1220 340 1220 495" stroke="#2b8279" marker-end="url(#teal)"/>
+  <text x="1245" y="335" class="body" style="fill:#2b8279">检索索引</text>
+  <text x="1245" y="368" class="body" style="fill:#2b8279">与记忆正文</text>
+  <path class="line" d="M990 615 H1050" stroke="#2b8279" stroke-dasharray="5 7" marker-end="url(#teal)"/>
+  <path class="line" d="M1220 830 C1220 880 930 902 842 740" stroke="#2b8279" marker-end="url(#teal)"/>
+  <text x="1148" y="882" text-anchor="middle" class="body" style="fill:#2b8279">相关内容回到当前上下文</text>
+
+  <!-- Evidence staging is a background branch, not a prerequisite for searching notes. -->
+  <path class="line" d="M445 306 H415 V940 H445" stroke="#8a6caf" stroke-dasharray="5 7" marker-end="url(#purple)"/>
+  <!-- A bridge keeps the two crossing lines from looking like a junction. -->
+  <path d="M405 615 H427" stroke="#faf9f6" stroke-width="12"/>
+  <path class="line" d="M427 615 Q415 602 403 615" stroke="#bd6747"/>
+  <text x="205" y="842" class="body" style="fill:#8a6caf">暂存证据</text>
+  <text x="205" y="875" class="body" style="fill:#8a6caf">与召回信号</text>
+  <path class="line" d="M995 1010 H1368 Q1412 1010 1412 966 V193 Q1412 155 1374 155 H995" stroke="#8a6caf" marker-end="url(#purple)"/>
+  <text x="1126" y="955" class="body" style="fill:#8a6caf">通过门槛后</text>
+  <text x="1126" y="987" class="body mono" style="fill:#8a6caf">更新 MEMORY.md</text>
+
+  <!-- Human-readable source surfaces and machine index are not interchangeable. -->
+  <rect x="445" y="125" width="550" height="305" rx="22" fill="#fff" stroke="#dce1e6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="470" y="164" class="heading">工作区记忆 · Markdown 事实源</text>
+  <rect x="469" y="190" width="240" height="148" rx="13" fill="#f4f1ec"/>
+  <text x="489" y="222" font-size="22" font-weight="700">每日记录</text>
+  <text x="489" y="254" class="mono" font-size="23">memory/</text>
+  <text x="489" y="284" class="mono" font-size="23">YYYY-MM-DD.md</text>
+  <text x="489" y="317" class="small">观察、任务与经验</text>
+  <rect x="725" y="190" width="246" height="148" rx="13" fill="#eef3fd"/>
+  <text x="745" y="225" font-size="22" font-weight="700" class="mono">USER.md</text>
+  <text x="745" y="253" class="small">用户信息与偏好</text>
+  <text x="745" y="286" font-size="22" font-weight="700" class="mono">MEMORY.md</text>
+  <text x="745" y="317" class="small">长期事实、经验与决策</text>
+  <rect x="469" y="356" width="502" height="50" rx="11" fill="#f2f4f7"/>
+  <text x="720" y="388" text-anchor="middle" font-size="22">SQLite：检索索引＋短期证据状态</text>
+
+  <rect x="450" y="540" width="540" height="200" rx="26" fill="#fff" stroke="#aab6c7" stroke-width="2" filter="url(#shadow)"/>
+  <text x="720" y="580" text-anchor="middle" class="heading">人与 OpenClaw 的持续对话</text>
+  <rect x="480" y="605" width="169" height="64" rx="14" fill="#f4f1ec"/>
+  <text x="564" y="645" text-anchor="middle" font-size="25" font-weight="700">人</text>
+  <path d="M669 637 H750" class="line" stroke="#82909e" marker-start="url(#gray)" marker-end="url(#gray)"/>
+  <rect x="774" y="605" width="185" height="64" rx="14" fill="#eef3fd"/>
+  <text x="866" y="645" text-anchor="middle" font-size="25" font-weight="700">OpenClaw</text>
+  <text x="720" y="715" text-anchor="middle" class="small">当前任务与后续会话 · 新的反馈继续记录</text>
+
+  <rect x="50" y="495" width="340" height="275" rx="22" fill="#fff" stroke="#e4d6ce" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="74" y="536" class="heading">记录与保存</text>
+  <text x="74" y="580" class="body" font-weight="700">工作中：主 Agent 记录</text>
+  <text x="74" y="612" class="small">明确要求 → 更新对应文件</text>
+  <path d="M74 634 H365" stroke="#e8e2dd"/>
+  <text x="74" y="669" class="body" font-weight="700">压缩前：memory flush*</text>
+  <text x="74" y="700" class="small">静默补写每日笔记</text>
+  <text x="74" y="741" class="small">会话记录也可纳入后台证据</text>
+
+  <rect x="1050" y="495" width="340" height="335" rx="22" fill="#fff" stroke="#cfe1de" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="1074" y="536" class="heading">检索与召回</text>
+  <text x="1074" y="578" font-size="21" font-weight="700" class="mono">memory_search → memory_get</text>
+  <text x="1074" y="611" class="small">混合检索* · 日记衰减 · 去冗余</text>
+  <text x="1074" y="640" class="small">尚未晋升的日记，也能查询</text>
+  <path d="M1074 661 H1365" stroke="#e0ebe8"/>
+  <text x="1074" y="695" class="body" font-weight="700">系统触发式注入</text>
+  <text x="1074" y="726" font-size="19" style="fill:#677183">仅来源合格的用户／长期层条目</text>
+  <text x="1074" y="771" font-size="20" font-weight="700">Active Memory* · 深召回</text>
+  <text x="1074" y="802" font-size="18" style="fill:#677183">子 Agent：询问过去且无强触发命中</text>
+
+  <rect x="445" y="885" width="550" height="215" rx="22" fill="#fff" stroke="#ded4e9" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="470" y="925" class="heading">dreaming* · 后台选择与归并</text>
+  <text x="470" y="956" class="small">短期证据：日记、会话与召回信号</text>
+  <rect x="470" y="976" width="145" height="43" rx="10" fill="#f2edf8"/>
+  <text x="542" y="1004" text-anchor="middle" font-size="21">Light · 整理</text>
+  <path d="M620 997 H634" stroke="#8a6caf" stroke-width="2" marker-end="url(#purple)"/>
+  <rect x="645" y="976" width="145" height="43" rx="10" fill="#f2edf8"/>
+  <text x="717" y="1004" text-anchor="middle" font-size="21">REM · 反思</text>
+  <path d="M795 997 H809" stroke="#8a6caf" stroke-width="2" marker-end="url(#purple)"/>
+  <rect x="820" y="976" width="145" height="43" rx="10" fill="#ece4f5"/>
+  <text x="892" y="1004" text-anchor="middle" font-size="21">Deep · 晋升</text>
+  <text x="470" y="1055" font-size="21">来源＋评分／频次门槛 → 添加、合并或替代</text>
+  <text x="470" y="1084" class="small">DREAMS.md：供人审阅，不是晋升来源</text>
+
+  <path d="M52 1130 H1388" stroke="#e1e3e6"/>
+  <path d="M53 1160 H92" class="line" stroke="#bd6747"/><text x="107" y="1167" class="small">写入</text>
+  <path d="M251 1160 H290" class="line" stroke="#4c70bd"/><text x="305" y="1167" class="small">启动／刷新</text>
+  <path d="M512 1160 H551" class="line" stroke="#2b8279"/><text x="566" y="1167" class="small">按需召回</text>
+  <path d="M767 1160 H806" class="line" stroke="#8a6caf"/><text x="821" y="1167" class="small">后台维护与晋升</text>
+  <text x="52" y="1202" font-size="18" style="fill:#677183">* flush、dreaming 可关闭；混合检索需嵌入配置。Active Memory 需启用，图示其默认 escalate 模式。</text>
+  <text x="52" y="1232" font-size="18" style="fill:#677183">范围：官方文档（2026-10-12）· Memory Core；省略近期日记加载特例、未来意图与其他插件。各路径并非每轮必经。</text>
+</svg>

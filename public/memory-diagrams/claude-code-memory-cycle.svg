@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="980" viewBox="0 0 1440 980" role="img" aria-labelledby="title desc">
+  <title id="title">Claude Code 的跨会话记忆循环</title>
+  <desc id="desc">人与 Claude Code 的对话产生记忆信号。主 Agent 在任务中直接更新，或在完整回合结束后由 Stop hook 条件性启动后台提取；两路写入项目级 Markdown 主题文件并维护 MEMORY.md。四类内容为 user、feedback、project 和 reference，并不表示只有四个文件。会话启动加载有限的 MEMORY.md 短索引；主题正文通过主 Agent 按需 Read 或系统条件性 side-query 预取回到当前上下文。系统预取的旧记忆附加验证提醒，依据文件最后修改时间而非事实有效期；不是自动删除或强制核验。auto-dream 在启用且条件满足时整理主题与索引。图按 2026 年 3 月源码研究样本概括，不代表所有当前版本。</desc>
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="9" flood-color="#243247" flood-opacity="0.06"/>
+    </filter>
+    <marker id="orange" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#bd6747"/></marker>
+    <marker id="blue" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4c70bd"/></marker>
+    <marker id="teal" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2b8279"/></marker>
+    <marker id="gray" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#82909e"/></marker>
+    <style>
+      text{font-family:'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif;fill:#273345}
+      .heading{font-size:27px;font-weight:700}
+      .body{font-size:23px}
+      .small{font-size:20px;fill:#677183}
+      .mono{font-family:Consolas,'Microsoft YaHei',monospace}
+      .line{fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+
+  <rect width="1440" height="980" fill="#faf9f6"/>
+  <text x="52" y="58" font-size="34" font-weight="700">Claude Code 的记忆循环</text>
+  <text x="52" y="94" class="body" fill="#677183">从一次对话中保存，在后续协作中按需取回</text>
+
+  <!-- Two write paths converge on the project-scoped memory directory. -->
+  <path class="line" d="M450 563 H393" stroke="#bd6747" marker-end="url(#orange)"/>
+  <path class="line" d="M215 370 C215 255 282 214 445 214" stroke="#bd6747" marker-end="url(#orange)"/>
+  <text x="53" y="267" class="body" style="fill:#a8593e">写入主题</text>
+  <text x="53" y="300" class="body" style="fill:#a8593e">更新索引</text>
+
+  <!-- The short index has its own loading route; it is not the topic body. -->
+  <path class="line" d="M720 394 V470" stroke="#4c70bd" marker-end="url(#blue)"/>
+  <rect x="548" y="422" width="344" height="33" rx="10" fill="#faf9f6"/>
+  <text x="720" y="446" text-anchor="middle" class="body" style="fill:#4c70bd">会话启动 · 加载有限的短索引</text>
+
+  <!-- Candidate descriptions and selected bodies come from topic files, not the index. -->
+  <path class="line" d="M995 215 C1160 215 1220 270 1220 370" stroke="#2b8279" marker-end="url(#teal)"/>
+  <text x="1245" y="277" class="body" style="fill:#2b8279">候选描述</text>
+  <text x="1245" y="310" class="body" style="fill:#2b8279">与主题正文</text>
+  <path class="line" d="M990 563 H1050" stroke="#2b8279" stroke-dasharray="5 7" marker-end="url(#teal)"/>
+  <path class="line" d="M1220 740 C1220 792 918 824 842 670" stroke="#2b8279" marker-end="url(#teal)"/>
+  <text x="1090" y="821" text-anchor="middle" class="body" style="fill:#2b8279">相关正文回到当前上下文</text>
+
+  <!-- File storage: the four tiles represent categories, not a fixed file count. -->
+  <rect x="445" y="125" width="550" height="285" rx="22" fill="#fff" stroke="#dce1e6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="470" y="164" class="heading">项目级记忆目录</text>
+  <text x="470" y="193" class="small">Markdown 主题文件 · 四类内容，不限四个文件</text>
+
+  <g>
+    <rect x="469" y="211" width="118" height="76" rx="12" fill="#f2f4f7"/>
+    <text x="528" y="240" text-anchor="middle" font-size="22" font-weight="700" class="mono">user</text>
+    <text x="528" y="271" text-anchor="middle" font-size="21">角色与偏好</text>
+    <rect x="597" y="211" width="118" height="76" rx="12" fill="#f2f4f7"/>
+    <text x="656" y="240" text-anchor="middle" font-size="21" font-weight="700" class="mono">feedback</text>
+    <text x="656" y="271" text-anchor="middle" font-size="21">纠正与认可</text>
+    <rect x="725" y="211" width="118" height="76" rx="12" fill="#f2f4f7"/>
+    <text x="784" y="240" text-anchor="middle" font-size="22" font-weight="700" class="mono">project</text>
+    <text x="784" y="271" text-anchor="middle" font-size="21">背景与约束</text>
+    <rect x="853" y="211" width="118" height="76" rx="12" fill="#f2f4f7"/>
+    <text x="912" y="240" text-anchor="middle" font-size="21" font-weight="700" class="mono">reference</text>
+    <text x="912" y="271" text-anchor="middle" font-size="21">外部入口</text>
+  </g>
+  <rect x="469" y="300" width="502" height="35" rx="9" fill="#faf9f6" stroke="#aeb5bf" stroke-dasharray="4 5"/>
+  <text x="720" y="324" text-anchor="middle" class="small">auto-dream*：后台归并、纠错、修索引</text>
+  <rect x="469" y="351" width="502" height="43" rx="10" fill="#eef3fd"/>
+  <text x="489" y="380" class="body mono" font-weight="700" style="fill:#4c70bd">MEMORY.md</text>
+  <text x="652" y="380" class="body" style="fill:#4c70bd">短索引 → 主题文件</text>
+
+  <!-- The dialogue is the reusable loop's center, not a continuously running daemon. -->
+  <rect x="450" y="470" width="540" height="200" rx="26" fill="#fff" stroke="#aab6c7" stroke-width="2" filter="url(#shadow)"/>
+  <text x="720" y="510" text-anchor="middle" class="heading">人与 Claude Code 的对话</text>
+  <rect x="480" y="535" width="169" height="64" rx="14" fill="#f4f1ec"/>
+  <text x="564" y="575" text-anchor="middle" font-size="25" font-weight="700">人</text>
+  <path d="M669 567 H750" class="line" stroke="#82909e" marker-start="url(#gray)" marker-end="url(#gray)"/>
+  <rect x="772" y="535" width="188" height="64" rx="14" fill="#edf1f7"/>
+  <text x="866" y="575" text-anchor="middle" font-size="25" font-weight="700">主 Agent</text>
+  <text x="720" y="639" text-anchor="middle" class="body">本次任务与后续会话 · 新的反馈继续写入</text>
+
+  <!-- Write timing is tied to a complete turn, not necessarily session/process exit. -->
+  <rect x="50" y="370" width="340" height="280" rx="22" fill="#fff" stroke="#e3d4ca" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="50" y="394" width="5" height="33" rx="2" fill="#bd6747"/>
+  <text x="75" y="420" class="heading">提取与写入</text>
+  <text x="75" y="463" class="body" font-weight="700">任务中：主 Agent 直写</text>
+  <text x="75" y="497" class="small">明确要求记住、忘记或纠正</text>
+  <line x1="75" y1="520" x2="365" y2="520" stroke="#eee7e0"/>
+  <text x="75" y="555" class="body" font-weight="700">回合结束：后台提取*</text>
+  <text x="75" y="589" class="small">Stop hook → extract-memories</text>
+  <text x="75" y="624" class="small">本轮已直写时，跳过后台提取</text>
+
+  <!-- These are separate retrieval owners; side-query is not a main-Agent tool call. -->
+  <rect x="1050" y="370" width="340" height="370" rx="22" fill="#fff" stroke="#cce0dc" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="1050" y="394" width="5" height="33" rx="2" fill="#2b8279"/>
+  <text x="1075" y="420" class="heading">两路召回</text>
+  <text x="1075" y="463" class="body" font-weight="700">主 Agent 主动拉取</text>
+  <text x="1075" y="497" class="small">根据索引判断 → 按需 Read</text>
+  <line x1="1075" y1="520" x2="1365" y2="520" stroke="#e0ece8"/>
+  <text x="1075" y="555" class="body" font-weight="700">系统异步预取*</text>
+  <text x="1075" y="589" class="small">按用户问题 → side-query 选档</text>
+  <text x="1075" y="622" class="small">系统读取正文，经去重与预算筛选</text>
+  <text x="1075" y="655" class="small" style="fill:#a8593e">旧记忆附验证提醒，非强制核验</text>
+  <rect x="1073" y="674" width="294" height="45" rx="9" fill="#eff6f3"/>
+  <text x="1220" y="703" text-anchor="middle" class="small" style="fill:#2b8279">正文按需进入，不随索引全量加载</text>
+
+  <line x1="52" y1="848" x2="1388" y2="848" stroke="#dedfdc"/>
+  <g class="small">
+    <line x1="55" y1="883" x2="101" y2="883" stroke="#bd6747" stroke-width="3.5"/>
+    <text x="115" y="890">保存与更新</text>
+    <line x1="340" y1="883" x2="386" y2="883" stroke="#4c70bd" stroke-width="3.5"/>
+    <text x="400" y="890">索引加载</text>
+    <line x1="590" y1="883" x2="636" y2="883" stroke="#2b8279" stroke-width="3.5"/>
+    <text x="650" y="890">正文召回</text>
+    <line x1="850" y1="883" x2="896" y2="883" stroke="#2b8279" stroke-width="3" stroke-dasharray="5 7"/>
+    <text x="910" y="890">当前问题／读取请求</text>
+  </g>
+  <text x="52" y="930" class="small">* 条件性路径：需启用相应功能并满足触发条件；后台提取与预取不保证及时完成或命中。</text>
+  <text x="52" y="959" font-size="18" fill="#7a8290">按 2026 年 3 月源码研究样本概括，非当前所有版本的行为承诺。循环表示跨会话复用，不是每轮必经的固定步骤。</text>
+</svg>

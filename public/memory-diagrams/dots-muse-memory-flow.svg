@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1530" viewBox="0 0 1440 1530" role="img" aria-labelledby="title desc">
+  <title id="title">dots 与 Muse：跨入口记忆与主动工作</title>
+  <desc id="desc">基于 2026-10-12 查阅的官方资料概括公开行为，不是完整内部架构。dots 使用当前对话、相关 ChatGPT 记忆和自身交互笔记；后台只读研究形成私有笔记，结果供主 dot 使用。交互笔记与研究笔记按职责分别画出，不表示底层物理存储已知。ChatGPT、Slack、Teams 是同一个 dot 的不同入口，委派任务仅获得所选上下文；后续行动和向其他受众披露仍受权限约束。Muse 的记忆跨会话延续，用户可以直接查看和编辑记忆文件；具体提取、维护和召回算法未详述，因此不画成已知流水线。箭头表示公开支持的信息或操作路径，不表示每轮必经顺序。</desc>
+  <metadata>Sources checked 2026-10-12: https://learn.chatgpt.com/docs/dots/tasks-and-memory ; https://openai.com/index/how-we-build-safety-security-and-privacy-into-dots/ ; https://help.openai.com/en/articles/20001529-dots-privacy-security-and-safety-faqs ; https://introducing.muse.ai/ ; https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse</metadata>
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#243247" flood-opacity="0.045"/></filter>
+    <marker id="blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#4c70bd"/></marker>
+    <marker id="teal" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#2b8279"/></marker>
+    <marker id="orange" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#bd6747"/></marker>
+    <marker id="gray" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#82909e"/></marker>
+    <style>
+      text{font-family:'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif;fill:#273345}
+      .heading{font-size:27px;font-weight:700}.body{font-size:23px}.small{font-size:21px;fill:#677183}
+      .line{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+      .card{fill:#fff;stroke:#dce1e6;stroke-width:1.5;filter:url(#shadow)}
+    </style>
+  </defs>
+  <rect width="1440" height="1530" fill="#faf9f6"/>
+  <text x="50" y="58" font-size="34" font-weight="700">dots 与 Muse：跨入口记忆与主动工作</text>
+  <text x="50" y="98" class="body" style="fill:#677183">记忆不只来自已经说过的话，也能来自后台研究；使用与分享仍需区分</text>
+
+  <rect x="26" y="132" width="1388" height="932" rx="24" fill="#f4f6fa" stroke="#e0e5ed"/>
+  <text x="50" y="174" class="heading">dots · 已公开的信息流</text>
+  <text x="1390" y="174" text-anchor="end" class="small">跨入口延续 ≠ 全量共享</text>
+
+  <!-- Read-only research is a separate source of notes, not a consolidation stage. -->
+  <path class="line" d="M220 340 V420" stroke="#2b8279" marker-end="url(#teal)"/>
+  <text x="244" y="386" class="body" style="fill:#2b8279">获准读取</text>
+  <path class="line" d="M220 570 V650" stroke="#2b8279" marker-end="url(#teal)"/>
+  <text x="244" y="616" class="body" style="fill:#2b8279">保存发现</text>
+  <path class="line" d="M390 713 H432 V492 H500" stroke="#2b8279" marker-end="url(#teal)"/>
+  <rect x="402" y="594" width="60" height="71" rx="8" fill="#f4f6fa"/>
+  <text x="432" y="620" text-anchor="middle" class="small" style="fill:#2b8279">供其</text>
+  <text x="432" y="649" text-anchor="middle" class="small" style="fill:#2b8279">使用</text>
+
+  <!-- Relevant ChatGPT memory and dot notes are separate sources. -->
+  <path class="line" d="M725 315 V420" stroke="#4c70bd" marker-end="url(#blue)"/>
+  <text x="748" y="379" class="body" style="fill:#4c70bd">相关记忆与上下文</text>
+  <path class="line" d="M590 570 V685" stroke="#bd6747" marker-end="url(#orange)"/>
+  <text x="560" y="621" text-anchor="end" class="small" style="fill:#a8593e">随交互</text>
+  <text x="560" y="651" text-anchor="end" class="small" style="fill:#a8593e">更新笔记</text>
+  <path class="line" d="M850 685 V570" stroke="#4c70bd" marker-end="url(#blue)"/>
+  <text x="822" y="621" text-anchor="end" class="small" style="fill:#4c70bd">后续对话</text>
+  <text x="822" y="651" text-anchor="end" class="small" style="fill:#4c70bd">复用</text>
+
+  <!-- Contact methods share a dot; delegated work gets selected context only. -->
+  <path class="line" d="M950 455 H1100" stroke="#82909e" marker-start="url(#gray)" marker-end="url(#gray)"/>
+  <text x="1025" y="434" text-anchor="middle" class="small">同一个 dot</text>
+  <path class="line" d="M950 515 H1005 V750 H1100" stroke="#4c70bd" marker-end="url(#blue)"/>
+  <rect x="973" y="617" width="64" height="79" rx="8" fill="#f4f6fa"/>
+  <text x="1005" y="644" text-anchor="middle" class="small" style="fill:#4c70bd">选择</text>
+  <text x="1005" y="675" text-anchor="middle" class="small" style="fill:#4c70bd">上下文</text>
+  <path class="line" d="M950 548 H1048 V950 H950" stroke="#bd6747" marker-end="url(#orange)"/>
+  <text x="1024" y="842" text-anchor="end" class="small" style="fill:#a8593e">后续行动</text>
+
+  <rect x="50" y="205" width="340" height="135" rx="19" class="card"/>
+  <text x="74" y="248" class="heading">获准访问的信息源</text>
+  <text x="74" y="288" class="body">已连接应用与工作信息</text>
+  <text x="74" y="319" class="small">连接服务不等于授权所有动作</text>
+
+  <rect x="50" y="420" width="340" height="150" rx="19" class="card"/>
+  <text x="74" y="463" class="heading">后台主动研究</text>
+  <text x="74" y="505" class="body">只读任务／后台 Agent</text>
+  <text x="74" y="539" class="small">可以在用户未提问时开展</text>
+
+  <rect x="50" y="650" width="340" height="140" rx="19" fill="#edf5f2" stroke="#cfe1de" stroke-width="1.5"/>
+  <text x="74" y="691" class="heading">私有研究笔记</text>
+  <text x="74" y="732" class="body">有用的发现与关联线索</text>
+  <text x="74" y="764" class="small">研究结果报告给主 dot</text>
+
+  <rect x="500" y="205" width="450" height="110" rx="19" fill="#edf2fb" stroke="#d0dbef" stroke-width="1.5"/>
+  <text x="524" y="247" class="heading">ChatGPT 记忆</text>
+  <text x="524" y="286" class="body">可共享给 dot · 独立管理</text>
+
+  <rect x="500" y="420" width="450" height="150" rx="24" fill="#fff" stroke="#aab6c7" stroke-width="2" filter="url(#shadow)"/>
+  <text x="725" y="467" text-anchor="middle" class="heading">人与主 dot 的持续交互</text>
+  <text x="725" y="510" text-anchor="middle" class="body">当前对话＋相关记忆与笔记</text>
+  <text x="725" y="546" text-anchor="middle" class="small">用于回复、建议和持续工作</text>
+
+  <rect x="500" y="685" width="450" height="145" rx="19" fill="#fff" stroke="#d0dbef" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="524" y="725" class="heading">dot 自身的交互笔记</text>
+  <text x="524" y="765" class="body">偏好 · 决策 · 持续工作</text>
+  <text x="524" y="801" class="small">非完整对话记录 · 与 ChatGPT 记忆分开</text>
+
+  <rect x="1100" y="420" width="280" height="150" rx="19" class="card"/>
+  <text x="1124" y="462" class="heading">不同联系入口</text>
+  <text x="1124" y="501" font-size="21">ChatGPT / Slack / Teams</text>
+  <text x="1124" y="538" class="small">可见对话仍然彼此独立</text>
+
+  <rect x="1100" y="685" width="280" height="145" rx="19" class="card"/>
+  <text x="1124" y="726" class="heading">委派的子任务</text>
+  <text x="1124" y="767" class="body">任务所需的指令与信息</text>
+  <text x="1124" y="802" class="small">不自动获得全部历史对话</text>
+
+  <rect x="50" y="855" width="340" height="130" rx="17" fill="#e9f2ef"/>
+  <text x="74" y="893" font-size="23" font-weight="700" style="fill:#2b8279">研究工具的代码限制</text>
+  <text x="74" y="928" class="small">不能直接发消息或改应用</text>
+  <text x="74" y="960" class="small">不能控制浏览器或桌面</text>
+
+  <rect x="500" y="900" width="450" height="100" rx="17" fill="#f6ede7" stroke="#e4d6ce"/>
+  <text x="524" y="940" class="heading">权限与审批检查</text>
+  <text x="524" y="978" class="body">记住信息 ≠ 获准执行或向他人披露</text>
+
+  <rect x="1100" y="855" width="280" height="145" rx="17" fill="#edf0f5"/>
+  <text x="1124" y="892" font-size="23" font-weight="700">当前的纠错边界</text>
+  <text x="1124" y="928" class="small">不支持直接查看、修改</text>
+  <text x="1124" y="960" class="small">或删除单条 dot 记忆</text>
+  <text x="1124" y="990" font-size="19" style="fill:#677183">关共享 ≠ 清除已有记忆</text>
+
+  <text x="50" y="1041" class="small">笔记按职责分开画出，不表示物理存储结构；具体提取触发、索引、召回排序与合并算法未详述。</text>
+
+  <!-- Muse is a separate product. Reuse is known, the intermediate algorithms are not. -->
+  <rect x="26" y="1090" width="1388" height="350" rx="24" fill="#f3f1ec" stroke="#e4e0d8"/>
+  <text x="50" y="1134" class="heading">Muse · 已公开的延续与用户控制</text>
+  <text x="1390" y="1134" text-anchor="end" class="small">不沿用上方 dots 的内部链路</text>
+
+  <path class="line" d="M370 1214 H555" stroke="#82909e" marker-end="url(#gray)"/>
+  <text x="462" y="1190" text-anchor="middle" class="small">保留跨会话记忆</text>
+  <path class="line" d="M555 1273 H370" stroke="#82909e" marker-end="url(#gray)"/>
+  <text x="462" y="1310" text-anchor="middle" class="small">供后续交互复用</text>
+  <path class="line" d="M1080 1245 H895" stroke="#2b8279" marker-end="url(#teal)"/>
+  <text x="987" y="1223" text-anchor="middle" class="small" style="fill:#2b8279">直接查看／编辑</text>
+
+  <rect x="50" y="1170" width="320" height="135" rx="19" class="card"/>
+  <text x="74" y="1212" class="heading">人与 Muse 的持续交互</text>
+  <text x="74" y="1254" class="body">主对话与侧边对话</text>
+  <text x="74" y="1286" class="small">可在后台推进目标与任务</text>
+
+  <rect x="555" y="1170" width="340" height="135" rx="19" class="card"/>
+  <text x="579" y="1212" class="heading">Memory 文件</text>
+  <text x="579" y="1254" class="body">跨会话保留的记忆</text>
+  <text x="579" y="1286" class="small">可读、可编辑、可下载</text>
+
+  <rect x="1080" y="1170" width="300" height="135" rx="19" fill="#edf5f2" stroke="#cfe1de" stroke-width="1.5"/>
+  <text x="1104" y="1212" class="heading">用户的记忆控制</text>
+  <text x="1104" y="1254" class="body">检查并修正文件内容</text>
+  <text x="1104" y="1286" class="small">不只是通过对话要求纠正</text>
+
+  <text x="50" y="1371" class="small">这里只表示公开的保留与复用关系；提取、召回与合并算法未详述，不把箭头解释为特定工具或加载方式。</text>
+  <text x="50" y="1409" class="small">读取／修改记忆的控制，与行动权限是不同问题；用户可编辑文件，也不等于全部持久状态都采用同一种格式。</text>
+
+  <text x="50" y="1475" font-size="20" style="fill:#677183">来源：dots Tasks and memory／Safety blog／Privacy FAQs；Meta Muse Design／Security blogs</text>
+  <text x="50" y="1507" font-size="20" style="fill:#677183">核对日期：2026-10-12 · 官方公开行为示意 · 箭头是可用路径，不是每轮必经顺序 · 非真实产品界面</text>
+</svg>
