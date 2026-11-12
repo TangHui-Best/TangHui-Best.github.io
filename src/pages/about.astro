@@ -5,7 +5,6 @@ import headshot from "../assets/tang-hui-headshot.jpg";
 
 const systems = [
   {
-    number: "01",
     title: "RPA Agent",
     statement: "让自动化能力进入真实业务流程。",
     context: "业务流程中的规则、上下文与人工判断，并不天然适配自动化。",
@@ -13,7 +12,6 @@ const systems = [
     constraint: "自动化不仅要跑通，还要能在既有系统、权限边界与长期维护中持续成立。",
   },
   {
-    number: "02",
     title: "Agent Gateway",
     statement: "为复杂 Agent 生态建立连接层。",
     context: "Agent、工具与企业服务增多后，接入、调用与责任边界很容易快速分散。",
@@ -21,128 +19,149 @@ const systems = [
     constraint: "权限、协议、稳定性与演进成本需要被前置设计，而不是在系统复杂后补救。",
   },
 ];
+
+const facts = [
+  { label: "所在", value: "华为 · 深圳" },
+  { label: "方向", value: "企业级 AI / Agent" },
+];
 ---
 
-<BaseLayout title="About Me" description="Tang Hui 的企业级 AI / Agent 工程实践与个人介绍。" wide>
-  <section class="about-case-hero" aria-labelledby="about-title">
-    <div class="about-case-hero__copy">
-      <div class="about-case-hero__topline">
-        <span>Build agents for a more capable organization</span>
-        <a class="back-link" href="/">← 首页</a>
-      </div>
-      <div class="about-case-hero__identity">
-        <p class="about-index">01</p>
-        <h1 id="about-title">Tang <span>Hui</span></h1>
-        <p class="about-case-hero__role">企业级 AI / Agent 工程师</p>
-        <p class="about-case-hero__date">2022.07 — 至今</p>
-      </div>
-      <div class="about-case-hero__statement">
-        <p>近四年，我在华为参与 Agent、自动化与数字化平台的工程实践。</p>
-        <p>我的工作，是把模型能力放进复杂组织的既有系统里，并把接入、编排、治理和可靠运行一起做成可持续演进的工程能力。</p>
-      </div>
-    </div>
-    <figure class="about-profile">
-      <div class="about-profile__header" aria-hidden="true">
-        <span>工作档案</span>
-        <span>01 / 01</span>
-      </div>
-      <div class="about-profile__frame">
-        <div class="about-portrait__photo">
-          <img src={headshot.src} width={headshot.width} height={headshot.height} alt="Tang Hui 的职业照" fetchpriority="high" />
+<BaseLayout title="关于" description="Tang Hui 的企业级 AI / Agent 工程实践与个人介绍。">
+  <div class="shell">
+    <section class="about-hero" aria-labelledby="about-title">
+      <a class="back-link" href="/">← 首页</a>
+      <div class="about-hero__grid">
+        <div class="about-hero__copy">
+          <p class="kicker">About</p>
+          <h1 id="about-title" class="about-name">Tang <span>Hui</span></h1>
+          <p class="about-role">{site.role}</p>
+          <p class="about-period">2022.07 — 至今</p>
+          <p class="about-statement">
+            我的工作，是把模型能力带入复杂组织的既有系统，并把接入、编排、治理和可靠运行组织为可持续演进的工程能力。
+          </p>
         </div>
-        <dl class="about-profile__facts">
-          <div>
-            <dt>所在</dt>
-            <dd>华为 · 深圳</dd>
-          </div>
-          <div>
-            <dt>方向</dt>
-            <dd>企业级 AI / Agent</dd>
-          </div>
-          <div>
-            <dt>经验</dt>
-            <dd>近四年工程实践</dd>
-          </div>
-        </dl>
+
+        <div class="about-hero__side">
+          <figure class="profile">
+            <div class="profile__head" aria-hidden="true">
+              <span>Work profile</span>
+              <span>01</span>
+            </div>
+            <div class="profile__body">
+              <div class="profile__photo">
+                <span class="profile__photo-frame" aria-hidden="true"></span>
+                <div class="profile__photo-inner">
+                  <img
+                    src={headshot.src}
+                    width={headshot.width}
+                    height={headshot.height}
+                    alt={`${site.title} 的职业照`}
+                    fetchpriority="high"
+                  />
+                </div>
+              </div>
+              <dl class="facts">
+                {facts.map((fact) => (
+                  <div>
+                    <dt>{fact.label}</dt>
+                    <dd>{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <figcaption class="profile__foot">
+              <span>2022.07 — now</span>
+              <span>持续工程实践</span>
+            </figcaption>
+          </figure>
+        </div>
       </div>
-      <div class="about-profile__focus">
-        <p>AI / Agent · 自动化与数字化平台</p>
-        <p>Java · Python · 分布式工程</p>
+    </section>
+
+    <section class="sec" aria-labelledby="cases-title">
+      <div class="twelve" style="margin-bottom:1.6rem">
+        <div class="col-4">
+          <p class="kicker">Problems</p>
+          <h2 id="cases-title" class="sec-title">我在解决的问题</h2>
+          <span class="rule" aria-hidden="true"></span>
+        </div>
+        <div class="col-8 col-8--end">
+          <p class="copy" style="margin-top:0">公开范围：仅讨论工程问题与个人职责，不涉及内部数据或实现细节。</p>
+        </div>
       </div>
-      <figcaption>
-        <span>2022.07 — 至今</span>
-        <span>持续工程实践</span>
-      </figcaption>
-    </figure>
+
+      <div class="cases">
+        {systems.map((system, i) => (
+          <article class="case">
+            <div class="case__head">
+              <span class="case__no" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3 class="case__title">{system.title}</h3>
+                <p class="case__statement">{system.statement}</p>
+              </div>
+            </div>
+            <div class="case__evidence">
+              <div>
+                <span class="case__label">场景</span>
+                <p>{system.context}</p>
+              </div>
+              <div>
+                <span class="case__label">参与</span>
+                <p>{system.role}</p>
+              </div>
+              <div>
+                <span class="case__label">工程约束</span>
+                <p>{system.constraint}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <section class="sec sec--surface" aria-labelledby="public-title">
+    <div class="shell">
+      <div class="twelve">
+        <div class="col-4">
+          <p class="kicker">Public work</p>
+          <h2 id="public-title" class="sec-title">公开实践</h2>
+          <span class="rule" aria-hidden="true"></span>
+        </div>
+        <div class="col-8">
+          <p class="lead">把工程判断，留在可查看的作品里。</p>
+          <p class="copy">
+            公开侧，我持续维护 <strong>ai-coding-harness</strong>，把对 Agent 开发流程、验证与可恢复性的思考沉淀为可阅读、可追溯的内容。
+          </p>
+          <div class="cta">
+            <a class="btn btn--solid" href="/projects">查看公开项目 <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="/writing">阅读技术写作 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="case-studies" aria-labelledby="case-studies-title">
-    <div class="case-studies__heading">
-      <div>
-        <p class="about-index">02</p>
-        <h2 id="case-studies-title">参与过的系统与问题</h2>
+  <section class="sec" aria-labelledby="beyond-title">
+    <div class="shell">
+      <div class="twelve">
+        <div class="col-4">
+          <p class="kicker">Beyond</p>
+          <h2 id="beyond-title" class="sec-title">工作之外</h2>
+          <span class="rule" aria-hidden="true"></span>
+        </div>
+        <div class="col-8">
+          <p class="lead">工程之外，也保持好奇。</p>
+          <p class="copy">
+            市场、历史与旅行提醒我：技术从不孤立发生，也需要放在对人与系统的长期观察里理解。
+          </p>
+          {site.github && (
+            <a class="text-link" href={site.github} target="_blank" rel="noreferrer noopener">
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+          )}
+        </div>
       </div>
-      <p>From complexity to capability</p>
-    </div>
-    <div class="case-studies__list">
-      {systems.map((system) => (
-        <article class="system-case">
-          <div class="system-case__title">
-            <span>{system.number}</span>
-            <div>
-              <h3>{system.title}</h3>
-              <p>{system.statement}</p>
-            </div>
-          </div>
-          <div class="system-case__evidence">
-            <div>
-              <span>场景</span>
-              <p>{system.context}</p>
-            </div>
-            <div>
-              <span>参与</span>
-              <p>{system.role}</p>
-            </div>
-            <div>
-              <span>工程约束</span>
-              <p>{system.constraint}</p>
-            </div>
-          </div>
-        </article>
-      ))}
-    </div>
-    <p class="case-studies__note">公开范围：仅讨论工程问题与个人职责，不涉及内部数据或实现细节。</p>
-  </section>
-
-  <section class="public-practice" aria-labelledby="public-practice-title">
-    <div>
-      <p class="eyebrow">03 · Public practice</p>
-      <h2 id="public-practice-title">把工程判断，<br />留在可查看的作品里。</h2>
-    </div>
-    <div class="public-practice__body">
-      <p>公开侧，我持续维护 <strong>ai-coding-harness</strong>，把对 Agent 开发流程、验证与可恢复性的思考沉淀为可阅读、可追溯的内容。</p>
-      <div class="public-practice__actions">
-        <a class="button" href="/projects">查看公开项目</a>
-        <a class="tab-link" href="/writing">阅读技术写作 →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="about-beyond about-beyond--quiet" aria-labelledby="beyond-title">
-    <div>
-      <p class="eyebrow">04 · Beyond work</p>
-      <h2 id="beyond-title">工程之外，<br />也保持好奇。</h2>
-    </div>
-    <p>市场、历史与旅行会不定期出现。它们提醒我：技术从来不是孤立发生的，也帮助我在工作之外保持对人与系统的长期观察。</p>
-  </section>
-
-  <section class="about-contact" aria-labelledby="contact-title">
-    <p class="eyebrow">Contact</p>
-    <h2 id="contact-title">如果这些问题也在你的工作里发生，欢迎交流。</h2>
-    <div>
-      {site.github && <a class="text-link" href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a>}
-      {site.email && <a class="text-link" href={`mailto:${site.email}`}>{site.email}</a>}
-      {!site.github && !site.email && <p>公开联系方式将在确认后展示。</p>}
     </div>
   </section>
 </BaseLayout>

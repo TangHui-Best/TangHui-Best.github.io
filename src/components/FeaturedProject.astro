@@ -1,0 +1,48 @@
+---
+import { featuredProject } from "../config";
+
+interface Props {
+  /** 首页显示「全部项目」，项目页本身不需要 */
+  showAllLink?: boolean;
+}
+
+const { showAllLink = true } = Astro.props;
+---
+
+<article class="featured">
+  <div class="featured__glow" aria-hidden="true"></div>
+  <div class="featured__inner">
+    <div class="featured__left">
+      <p class="featured__tag">{featuredProject.index} / OPEN SOURCE</p>
+      <h3 class="featured__head">{featuredProject.name}</h3>
+      <p class="featured__sub">{featuredProject.sub}</p>
+      <p class="featured__desc">{featuredProject.description}</p>
+      <div class="tags" aria-label="项目主题">
+        {featuredProject.stack.map((tag) => <span>{tag}</span>)}
+      </div>
+      <div class="featured__actions">
+        <a class="btn btn--solid" href={featuredProject.href} target="_blank" rel="noreferrer noopener">
+          在 GitHub 查看 <span aria-hidden="true">↗</span>
+        </a>
+        {showAllLink && <a class="btn btn--ghost" href="/projects">全部项目</a>}
+      </div>
+    </div>
+
+    <div class="featured__right">
+      <div class="loop">
+        <p class="loop__label">WHAT GETS KEPT</p>
+        <div class="loop__steps">
+          {featuredProject.keeps.map((step, i) => (
+            <div class:list={["step", { "step--on": i === 2 }]}>
+              <span class="step__n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <div class="step__body">
+                <span>{step.label}</span>
+                <em>{step.en}</em>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

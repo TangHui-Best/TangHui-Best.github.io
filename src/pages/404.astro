@@ -3,9 +3,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="页面未找到">
-  <section class="page-intro not-found">
-    <p class="eyebrow">404</p>
-    <h1>这里还没有内容。</h1>
-    <p><a class="button" href="/">返回首页</a></p>
-  </section>
+  <div class="shell">
+    <section class="page-head not-found">
+      <p class="kicker">404</p>
+      <h1 class="sec-title">这里还没有内容。</h1>
+      <span class="rule" aria-hidden="true"></span>
+      <p class="lede">链接可能已经移动，或者这篇文章还没写出来。</p>
+      <div class="cta">
+        <a class="btn btn--solid" href="/">返回首页 <span aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="/writing">看看文章</a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>

@@ -1,0 +1,46 @@
+---
+import { site } from "../config";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__top">
+      <div>
+        <p class="kicker">Get in touch</p>
+        <h2>在做 Agent 工程？<br /><span>聊聊。</span></h2>
+        <p class="foot__sub">上下文工程、记忆系统、多 Agent 架构，或者只是某个卡住的设计取舍。邮件通常回得比较快。</p>
+      </div>
+      <div>
+        <a class="btn btn--solid" href={`mailto:${site.email}`}>
+          {site.email} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="foot__grid">
+      <dl class="foot__col">
+        <dt>Navigate</dt>
+        <dd><a href="/about">关于</a></dd>
+        <dd><a href="/projects">项目</a></dd>
+        <dd><a href="/writing">写作</a></dd>
+      </dl>
+      <dl class="foot__col">
+        <dt>Elsewhere</dt>
+        <dd><a href={site.github} target="_blank" rel="noreferrer noopener">GitHub ↗</a></dd>
+        <dd><a href={`mailto:${site.email}`}>邮件</a></dd>
+      </dl>
+      <dl class="foot__col">
+        <dt>This site</dt>
+        <dd><p>Astro · GitHub Pages</p></dd>
+        <dd><p>内容持续更新</p></dd>
+      </dl>
+    </div>
+
+    <div class="foot__base">
+      <span>© {year} {site.title}</span>
+      <span>保持记录，保持可验证</span>
+    </div>
+  </div>
+</footer>

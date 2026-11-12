@@ -1,48 +1,216 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PostMeta from "../components/PostMeta.astro";
+import FeaturedProject from "../components/FeaturedProject.astro";
+import headshot from "../assets/tang-hui-headshot.jpg";
+import { site, series, formatDate, formatMonth } from "../config";
 
-const posts = (await getCollection("blog", ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+const allPosts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+/** 系列：带同一个 tag 的文章，按时间正序，编号由索引生成 */
+const seriesPosts = allPosts
+  .filter((post) => post.data.tags.includes(series.tag))
+  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+/** 近期：排除系列，取最新 3 篇 */
+const recentPosts = allPosts.filter((post) => !post.data.tags.includes(series.tag)).slice(0, 3);
+
+const seriesSince = seriesPosts.length > 0 ? `${formatMonth(seriesPosts[0].data.pubDate)} 起` : "";
+
+/** 系列标题里已经带了系列名和序号，卡片内只保留后半句 */
+const seriesLabelPattern = new RegExp(`^${series.label}[^：]*：\\s*`);
+const shortenTitle = (title: string) => title.replace(seriesLabelPattern, "").trim();
+
+const issues = [
+  {
+    q: "上下文给多少，什么时候该让它忘",
+    p: "记忆不是存得越多越好。写入时机、召回成本和维护频率才是真正的取舍点。",
+  },
+  {
+    q: "Agent 上线半年后，还能不能维护",
+    p: "权限、协议和异常处理要在系统变复杂之前设计好，不是等它乱了再补。",
+  },
+  {
+    q: "失败之后，是重跑还是接着跑",
+    p: "重跑的代价是重建上下文。所以要设计的不是重试，而是续接。",
+  },
+];
 ---
 
-<BaseLayout>
+<BaseLayout home>
   <section class="hero" aria-labelledby="intro-title">
-    <p class="eyebrow">个人网站 · 持续建设中</p>
-    <h1 id="intro-title">记录做过的事，<br />也写下其中的思考。</h1>
-    <p class="hero-copy">我目前在华为工作，关注 AI、Agent 与工程实践。这里收录可验证的项目、技术复盘，以及技术之外仍在生长的好奇心。</p>
-    <p class="hero-contact">欢迎来信交流：<a href="mailto:btanghui@163.com">btanghui@163.com</a></p>
-    <div class="hero-actions" aria-label="探索网站">
-      <a class="button" href="/writing">阅读文章</a>
-      <a class="tab-link" href="/projects">查看项目 <span aria-hidden="true">↗</span></a>
+    <div class="hero__wash" aria-hidden="true"></div>
+    <svg class="hero__grid" aria-hidden="true">
+      <defs>
+        <pattern id="g-grid" x="50%" y="-1" width="200" height="200" patternUnits="userSpaceOnUse">
+          <path d="M.5 200V.5H200" fill="none"></path>
+        </pattern>
+        <pattern id="g-code" x="0" y="0" width="420" height="420" patternUnits="userSpaceOnUse">
+          <text x="40" y="52" fill="#1d4ed8" font-family="monospace" font-size="20" transform="rotate(-15 40 52)">&lt;/&gt;</text>
+          <text x="210" y="96" fill="#1d4ed8" font-family="monospace" font-size="17" transform="rotate(10 210 96)">=&gt;</text>
+          <text x="330" y="58" fill="#1d4ed8" font-family="monospace" font-size="16" transform="rotate(-6 330 58)">[]</text>
+          <text x="90" y="196" fill="#1d4ed8" font-family="monospace" font-size="19" transform="rotate(14 90 196)">&lt;&gt;</text>
+          <text x="270" y="182" fill="#1d4ed8" font-family="monospace" font-size="17" transform="rotate(-9 270 182)">()</text>
+          <text x="150" y="268" fill="#1d4ed8" font-family="monospace" font-size="20" transform="rotate(6 150 268)">{ }</text>
+          <text x="350" y="300" fill="#1d4ed8" font-family="monospace" font-size="16" transform="rotate(12 350 300)">::</text>
+          <text x="40" y="340" fill="#1d4ed8" font-family="monospace" font-size="18" transform="rotate(-11 40 340)">==</text>
+          <text x="220" y="372" fill="#1d4ed8" font-family="monospace" font-size="17" transform="rotate(9 220 372)">++</text>
+          <text x="360" y="392" fill="#1d4ed8" font-family="monospace" font-size="16" transform="rotate(-7 360 392)">//</text>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#g-code)" opacity=".085"></rect>
+      <rect width="100%" height="100%" fill="url(#g-grid)" stroke-width="0"></rect>
+    </svg>
+
+    <div class="shell">
+      <div class="hero-layout">
+        <div class="hero__identity">
+          <p class="greet rise rise-1">你好 <span aria-hidden="true">👋</span></p>
+          <h1 id="intro-title" class="rise rise-2">我是 <span>{site.title}</span></h1>
+        </div>
+
+        <div class="hero__copy">
+          <p class="role rise rise-3">{site.role}</p>
+          <p class="lede rise rise-3">
+            {site.since} 年至今在华为做 Agent 的接入、编排与可靠运行。工作之外把踩过的坑和读过的源码写成文章，从 Claude Code 的上下文工程，一直拆到多 Agent 运行时。
+          </p>
+          <div class="cta rise rise-4">
+            <a class="btn btn--solid" href="/writing">先看文章 <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="/projects">公开项目 <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="socials rise rise-4">
+            <a href={`mailto:${site.email}`} aria-label="邮件联系">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path>
+                <path d="m3 7 9 6 9-6"></path>
+              </svg>
+            </a>
+            <a href={site.github} target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <figure class="hero__portrait rise rise-4">
+          <span class="portrait__frame" aria-hidden="true"></span>
+          <div class="portrait__img">
+            <img
+              src={headshot.src}
+              width={headshot.width}
+              height={headshot.height}
+              alt={`${site.title} 的职业照`}
+              fetchpriority="high"
+            />
+          </div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="hero__meta" aria-hidden="true">
+      <div class="shell hero__meta-inner">
+        <span>{site.location}</span>
+        <span>Enterprise AI / Agent</span>
+        <span>{site.since} — now</span>
+      </div>
     </div>
   </section>
 
-  <section class="latest-section" aria-labelledby="latest-title">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Writing</p>
-        <h2 id="latest-title">从真实问题开始</h2>
+  <section class="sec" id="about" aria-labelledby="about-title">
+    <div class="shell">
+      <div class="twelve">
+        <div class="col-4">
+          <p class="kicker">What I do</p>
+          <h2 id="about-title" class="sec-title">我在做什么</h2>
+          <span class="rule" aria-hidden="true"></span>
+        </div>
+        <div class="col-8">
+          <p class="lead">我的工作是把模型能力接进复杂组织的既有系统，并把接入、编排、治理和可靠运行，做成能长期演进的工程能力。</p>
+          <p class="copy">这件事很少只取决于模型本身。<strong>下面三个问题，是我每天真正在处理的部分</strong>，也是我大部分文章的起点。</p>
+
+          <div class="issues">
+            {issues.map((issue, i) => (
+              <div class="issue">
+                <span class="issues__n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <p class="issue__q">{issue.q}</p>
+                <p class="issue__p">{issue.p}</p>
+              </div>
+            ))}
+          </div>
+
+          <a class="text-link" href="/about">完整背景与经历 <span aria-hidden="true">→</span></a>
+        </div>
       </div>
-      <a class="section-link" href="/writing">全部文章 <span aria-hidden="true">→</span></a>
     </div>
-    {posts.length > 0 ? (
-      <div class="post-list">
-        {posts.map((post) => (
-          <article class="post-row">
-            <div>
-              <PostMeta date={post.data.pubDate} tags={post.data.tags} />
-              <h3><a href={`/writing/${post.slug}`}>{post.data.title}</a></h3>
-              <p>{post.data.description}</p>
+  </section>
+
+  <section class="sec sec--surface" id="writing" aria-labelledby="writing-title">
+    <div class="shell">
+      <div class="twelve">
+        <div class="col-4">
+          <p class="kicker">Writing</p>
+          <h2 id="writing-title" class="sec-title">写作</h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="copy">主要在拆 Agent 的上下文、记忆与运行时。多数结论来自读源码和工程里的具体卡点，不是综述。</p>
+        </div>
+
+        <div class="col-8">
+          {seriesPosts.length > 0 && (
+            <div class="series">
+              <div class="series__head">
+                <p class="series__kicker">{series.label}</p>
+                {seriesSince && <span class="series__count">{seriesSince}</span>}
+              </div>
+              {seriesPosts.map((post, i) => (
+                <a class="series__item" href={`/writing/${post.slug}`}>
+                  <span class="series__n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                  <span class="series__title">{shortenTitle(post.data.title)}</span>
+                  <span class="series__arrow" aria-hidden="true">↗</span>
+                </a>
+              ))}
             </div>
-            <a class="arrow-link" href={`/writing/${post.slug}`} aria-label={`阅读：${post.data.title}`}>↗</a>
-          </article>
-        ))}
+          )}
+
+          {recentPosts.length > 0 && (
+            <div class="recent">
+              <div class="recent__head"><span>近期文章</span></div>
+              {recentPosts.map((post) => (
+                <a class="post" href={`/writing/${post.slug}`}>
+                  <time class="post__date" datetime={post.data.pubDate.toISOString()}>
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                  <h3 class="post__title">{post.data.title}</h3>
+                  <span class="post__arrow" aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
+          )}
+
+          <div class="list-foot">
+            <a class="list-foot__more" href="/writing">全部文章 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
       </div>
-    ) : (
-      <p class="empty-state">第一篇文章正在打磨中。</p>
-    )}
+    </div>
+  </section>
+
+  <section class="sec" id="project" aria-labelledby="project-title">
+    <div class="shell">
+      <div class="twelve" style="margin-bottom:2rem">
+        <div class="col-4">
+          <p class="kicker">Selected work</p>
+          <h2 id="project-title" class="sec-title">项目</h2>
+          <span class="rule" aria-hidden="true"></span>
+        </div>
+        <div class="col-8 col-8--end">
+          <p class="copy" style="margin-top:0">能公开的和值得公开的，不是一回事。这里只放前一种。</p>
+        </div>
+      </div>
+
+      <FeaturedProject />
+    </div>
   </section>
 </BaseLayout>

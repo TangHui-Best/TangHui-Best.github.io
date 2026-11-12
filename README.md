@@ -41,6 +41,14 @@ draft: false
 
 `draft: true` 的文章不会显示或发布。
 
+### 系列文章
+
+首页的「Claude Code 源码解剖」卡片是一个自动聚合的系列：只要文章的 `tags` 里带 `Claude Code`，它就会进入系列，并按发布时间自动获得 `01`、`02`…… 编号。系列的显示名称在 `src/config.ts` 的 `series` 里改。新增后续篇目不需要动任何页面代码。
+
+## 视觉与字体
+
+设计规范见 `DESIGN.md`。等宽字体 IBM Plex Mono 已自托管在 `public/fonts/`（仅拉丁子集，4 个字重共 64KB），不要改成 Google Fonts 之类的远程引用——国内访问不稳定，也会让首屏多一次外部请求。
+
 ## 发布前替换
 
 编辑 `src/config.ts` 中的 GitHub 链接和邮箱。留空的字段不会显示在页面上。

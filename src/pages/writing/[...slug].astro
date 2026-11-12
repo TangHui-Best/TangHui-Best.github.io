@@ -25,9 +25,7 @@ const { Content } = await render(post);
 </BaseLayout>
 
 <script>
-  const mermaidBlocks = document.querySelectorAll<HTMLElement>(
-    '.prose pre[data-language="mermaid"] > code',
-  );
+  const mermaidBlocks = document.querySelectorAll<HTMLElement>('.prose pre[data-language="mermaid"] > code');
   if (mermaidBlocks.length > 0) {
     const mermaid = (await import("mermaid")).default;
     mermaid.initialize({ startOnLoad: false, theme: "neutral" });

@@ -68,6 +68,18 @@ F002 的首页、项目、写作与 About Me 页面已在现有 Astro 静态站�
 
 ## Notes
 
+### 2026-11-12 用户完成整站更新后的发布检查
+
+- 授权：用户明确要求提交并 push 部署其自行完成的完整更新；不重新调整用户的 UI 与文案。
+- Entry Gate：ready。Vision Anchor：F002 的 2026-11-12 发布锚点及 `DESIGN.md`；历史的 2026-10-31 构图限制由本次用户版本覆盖。
+- Delegation Gate：single_agent。本轮是既有站点的顺序发布验证，不拆分实现或重新进行设计评审；视觉接受以用户已完成的版本为准。
+- `node node_modules/astro/astro.js check`：通过，15 files，0 errors、0 warnings、0 hints。
+- `node node_modules/astro/astro.js build`：通过，生成 12 个静态页面和 17 张优化图片，耗时 49.27 秒。原有 Mermaid 依赖的大分块提示不阻止构建。
+- 静态产物检查：主页、项目、写作、关于和 404 页面均存在；首页含身份区、Claude Code 系列与 AgentMentor；4 个自托管字体均复制到产物。
+- 提交范围：已修改的受控文件、`DESIGN.md`、两个新增展示组件与 `public/fonts/`；本地 `.workbuddy/`、`drafts/` 和两个 `draft: true` 的未跟踪文章保留本机，不提交。
+- 发布路径：推送 `main` 触发既有 `Deploy GitHub Pages`；确切提交与线上发布结果可由该提交的 Actions 记录追溯。本记录的本地验证不代表云端发布已完成。
+- Evidence level：standard；无需 ADR 或独立 Lesson（未新增架构决策或修复运行故障）。
+
 - 公开信息仅覆盖用户提供的在职背景、技能方向和一个项目；后续应在新增可公开案例后补充项目页。
 - 2026-09-18 经 Git Credential Manager 重新认证后，提交 `3fd0aad` 已推送至 `main`；通过公网 `https://tanghui-best.github.io/projects` 确认「← 首页」已可见。
 - 提交 `70f8709` 已推送至 `main`；通过公网 `https://tanghui-best.github.io/about` 确认 About Me 与当前关注内容可见，`https://tanghui-best.github.io/now` 返回 HTTP 404。

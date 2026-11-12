@@ -1,35 +1,42 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PostMeta from "../../components/PostMeta.astro";
-import spiderMan from "../../assets/spider-man.svg";
+import { formatDate } from "../../config";
 
-const posts = (await getCollection("blog", ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
-<BaseLayout title="写作" description="技术实践、项目复盘与长期思考。">
-  <a class="back-link page-back" href="/">← 首页</a>
-  <section class="page-intro page-intro--from-home">
-    <p class="eyebrow">Writing</p>
-    <h1>写作</h1>
-    <p>记录 AI、Agent 与软件工程中的真实问题、关键取舍和可复查的复盘，也记录生活带来的观察与灵感。</p>
-  </section>
-  <div class="writing-divider" aria-hidden="true">
-    <span class="writing-divider__line"></span>
-    <span class="writing-divider__dip"></span>
-    <img class="writing-divider__spider" src={spiderMan.src} alt="" />
-  </div>
-  <section class="post-list post-list--writing" aria-label="文章列表">
-    {posts.map((post) => (
-      <article class="post-row">
+<BaseLayout title="写作" description="AI、Agent 与软件工程中的真实问题、关键取舍与可复查的复盘。">
+  <div class="shell">
+    <section class="page-head">
+      <a class="back-link" href="/">← 首页</a>
+      <div class="page-head__row">
         <div>
-          <PostMeta date={post.data.pubDate} tags={post.data.tags} />
-          <h2><a href={`/writing/${post.slug}`}>{post.data.title}</a></h2>
-          <p>{post.data.description}</p>
+          <p class="kicker">Writing</p>
+          <h1 class="sec-title">写作</h1>
+          <span class="rule" aria-hidden="true"></span>
         </div>
-        <a class="arrow-link" href={`/writing/${post.slug}`} aria-label={`阅读：${post.data.title}`}>↗</a>
-      </article>
-    ))}
-  </section>
+        <div>
+          <p class="lede">记录 AI、Agent 与软件工程中的真实问题、关键取舍和可复查的复盘，也记录生活带来的观察与灵感。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="posts section-pad" aria-label="文章列表">
+      {posts.map((post) => (
+        <a class="post" href={`/writing/${post.slug}`}>
+          <time class="post__date" datetime={post.data.pubDate.toISOString()}>
+            {formatDate(post.data.pubDate)}
+          </time>
+          <div>
+            <h2 class="post__title">{post.data.title}</h2>
+            <p class="post__desc">{post.data.description}</p>
+          </div>
+          <span class="post__arrow" aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </section>
+  </div>
 </BaseLayout>
